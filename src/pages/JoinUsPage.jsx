@@ -2,10 +2,13 @@ import ApplyProgress from "../components/Main/JoinUs/Form/ApplyProgress";
 import ApplyProgressControl from "../components/Main/JoinUs/Form/ApplyProgressControl";
 import Steps from "../components/Main/JoinUs/Form/Steps/Steps";
 import JobOptions from "../components/Main/JoinUs/Form/JobOptions";
+import JobModal from "../components/Main/JoinUs/JobModal";
 
 import { styled } from "styled-components";
 import { breakpoints } from "../styles/Breakpoints";
 import { MainContainer, PageContainer } from "../styles/Container";
+
+import Swal from "sweetalert2";
 
 import { useState } from "react";
 
@@ -37,7 +40,7 @@ export default function JoinUsPage() {
   const width = `${(100 / (totalPage - 1)) * (currentPage - 1)}%`;
 
   return (
-    <main className="site-main">
+    <main>
       <MainContainer>
         <section id="join-us">
           <JoinUsContainer>
@@ -58,6 +61,7 @@ export default function JoinUsPage() {
           </JoinUsContainer>
         </section>
       </MainContainer>
+      {/* <JobModal/> */}
     </main>
   );
 }
