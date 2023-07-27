@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import { breakpoints } from "../styles/Breakpoints";
+import { colorList } from "../styles/ColorSettings";
 import { PageContainer } from "../styles/Container";
 import AboutUs from "../components/Main/Home/AboutUs";
 import Subscribe from "../components/Main/Subscribe";
@@ -24,3 +25,4 @@ const HomeCarouselSection = styled.section`
     padding-top: 60px;
   }
 `;
+

@@ -10,7 +10,7 @@ import { CardDiv, CardBody, CardParagraph } from "../../Program/ProgramCard";
 import { FlexCenter } from "../../Event/RecommendEvent";
 import { SubTitle2 } from "../../../../styles/Title";
 
-export default function JobOptions() {
+export default function JobOptions({ onInfoClick }) {
   const jobCard = dummyJobData.map((job) => {
     return (
       <>
@@ -24,7 +24,9 @@ export default function JobOptions() {
           <JobCardBody>
             <FlexCenter justify="space-between">
               <SubTitle2>{job.title}</SubTitle2>
-              <MoreInfoLink>More Info.</MoreInfoLink>
+              <MoreInfoLink onClick={() => onInfoClick?.(job.id)}>
+                More Info.
+              </MoreInfoLink>
             </FlexCenter>
             <CardParagraph>
               <JobCardItem>
@@ -48,11 +50,9 @@ export default function JobOptions() {
   return <JobOptionsContainer>{jobCard}</JobOptionsContainer>;
 }
 
-
 // const JobLabel = styled.label`
 //   border: 2px solid ${colorList.green_focus_80};
 // `;
-
 
 const JobOptionsContainer = styled.div`
   white-space: nowrap;
@@ -81,7 +81,7 @@ const JobCardLabel = styled.label`
   height: 40vh;
   min-height: 200px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  
+
   background: ${(props) => `url(${props.background}) no-repeat center`};
   background-size: cover;
   position: relative;

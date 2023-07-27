@@ -21,12 +21,12 @@ const modalData = [
   },
 ];
 
-export default function JobModal() {
+export default function JobModal({prop, onModalClose}) {
   return (
     <JobModalSection id="job-modal">
-      <JobModalBtn>✖</JobModalBtn>
+      <JobModalBtn onClick={onModalClose}>✖</JobModalBtn>
       <JobModalHr />
-      {modalData.map((job) => {
+      {prop.map((job) => {
         return (
           <>
             <SubTitle>{job.title}</SubTitle>

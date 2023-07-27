@@ -11,10 +11,10 @@ import { dummyEventData } from '../../../Data/EventData';
 
 
 
-export default function EventList(){
+export default function EventList({props}){
   return (
       <EventListUL>
-        {dummyEventData.map((event) => {
+        {props.map((event) => {
           return (
             <EventItem>
               <Link to={`/events/${event.id}`}>

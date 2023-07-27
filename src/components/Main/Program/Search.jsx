@@ -39,7 +39,7 @@ const programFilterData = [
   },
 ];
 
-export default function Search() {
+export default function Search({searchValue, onSearchChange, onSearchClick, onSearchKeyDown}) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -52,16 +52,9 @@ export default function Search() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  const filterItem = programFilterData.map((item) => {
-    return (
-      <option className="filter-option" value={item.value}>
-        {item.name}
-      </option>
-    );
-  });
   const filterListItem = programFilterData.map((item) => {
     return (
-      <FilterRadioDiv>
+      <FilterRadioDiv key={item.id}>
         <FilterRadioInput
           type="radio"
           name="filter"
@@ -77,9 +70,19 @@ export default function Search() {
   return (
     <SearchDiv>
       <SearchGroup>
-        <SearchInput type="text" placeholder="Enter keyword..." />
+        <SearchInput
+          type="text"
+          placeholder="Enter keyword..."
+          value={searchValue}
+          onChange={onSearchChange}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              onSearchKeyDown?.();
+            }
+          }}
+        />
         <SearchBtnGroup>
-          <SearchSubmit type="submit" title="search...">
+          <SearchSubmit type="submit" title="search..." onClick={onSearchClick}>
             <MagnifyIcon />
           </SearchSubmit>
           <SearchMic>
@@ -90,9 +93,11 @@ export default function Search() {
       <FilterGroup data-mode="mobile">
         <FilterToggle type="checkbox" id="filter-toggle" />
         <FilterToggleLabel htmlFor="filter-toggle">
-          {windowWidth > 500 ? <FlexCenter>
-            Filter <FilterDesktopIcon/>
-          </FlexCenter> : (
+          {windowWidth > 500 ? (
+            <FlexCenter>
+              Filter <FilterDesktopIcon />
+            </FlexCenter>
+          ) : (
             <FilterIcon />
           )}
         </FilterToggleLabel>
@@ -100,11 +105,6 @@ export default function Search() {
           <div>{filterListItem}</div>
         </FilterDropdown>
       </FilterGroup>
-      {/* <FilterGroup data-mode="desktop">
-        <FilterSelect name="filter" id="filter-select" defaultValue="Current">
-          {filterItem}
-        </FilterSelect>
-      </FilterGroup> */}
     </SearchDiv>
   );
 }

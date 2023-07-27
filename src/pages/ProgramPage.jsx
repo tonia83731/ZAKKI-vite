@@ -7,7 +7,32 @@ import styled from "styled-components";
 import { breakpoints } from "../styles/Breakpoints";
 import { MainContainer, PageContainer } from "../styles/Container";
 
+import { dummyProgramData } from "../Data/ProgramData";
+
+import { useState } from "react";
+
 export default function ProgramPage() {
+  const [searchValue, setSearchValue] = useState("")
+  const [programData, setProgramData] = useState(dummyProgramData)
+  
+  const handleSearchChange = (e) => {
+    setSearchValue(e.target.value)
+  }
+  const handleSearchClick = () => {
+    if(searchValue.length === 0) return
+    const filterProgram = dummyProgramData.filter((prop) => prop.title.toLowerCase().trim().includes(searchValue))
+    setProgramData(filterProgram)
+    setSearchValue("")
+  }
+  const handleSearchKeyDown = () => {
+    if (searchValue.length === 0) return;
+    const filterProgram = dummyProgramData.filter((prop) =>
+      prop.title.toLowerCase().trim().includes(searchValue)
+    );
+    setProgramData(filterProgram);
+    setSearchValue("");
+  }
+
   return (
     <main>
       <MainContainer>
@@ -17,9 +42,14 @@ export default function ProgramPage() {
               title="Our Program"
               subtitle="Our program consists of healthcare check-up, elderly training/workshops, tai chi, and many more. Let’s explore below."
             />
-            <Search />
+            <Search
+              searchValue={searchValue}
+              onSearchChange={handleSearchChange}
+              onSearchClick={handleSearchClick}
+              onSearchKeyDown={handleSearchKeyDown}
+            />
             <ProgramCardGroup>
-              <ProgramCard />
+              <ProgramCard props={programData} />
             </ProgramCardGroup>
           </PageContainer>
         </section>

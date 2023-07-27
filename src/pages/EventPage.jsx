@@ -10,6 +10,9 @@ import Subscribe from "../components/Main/Subscribe";
 
 import RecommendEvent from "../components/Main/Event/RecommendEvent";
 import EventList from "../components/Main/Event/EventList";
+import { dummyEventData } from "../Data/EventData";
+
+import { useState } from "react";
 
 const pageData = [
   {
@@ -35,6 +38,27 @@ const pageData = [
 ];
 
 export default function EventPage() {
+  const [eventSearchValue, setEventSearchValue] = useState("");
+  const [eventData, setEventData] = useState(dummyEventData)
+  const handleEventSearchChange = (e) => {
+    setEventSearchValue(e.target.value)
+  }
+  const handleEventSearchClick = () => {
+    if(eventSearchValue.length === 0) return
+    const filterEvent = dummyEventData.filter((prop) =>
+      prop.title.toLowerCase().trim().includes(eventSearchValue)
+    );
+    setEventData(filterEvent)
+    setEventSearchValue("")
+  }
+  const handleEventSearchKeyDown = () => {
+    if (eventSearchValue.length === 0) return;
+    const filterEvent = dummyEventData.filter((prop) =>
+      prop.title.toLowerCase().trim().includes(eventSearchValue)
+    );
+    setEventData(filterEvent);
+    setEventSearchValue("");
+  }
   return (
     <main className="site-main">
       <MainContainer>
@@ -45,15 +69,15 @@ export default function EventPage() {
               subtitle="Other ways to support those who need.
     Attend our event to know how our program process"
             />
-            <Search />
             <div>
               <SubTitle margin="0 0 1em">Recommended Event</SubTitle>
               <RecommendEvent />
             </div>
             <BreakPadding />
+            <Search searchValue={eventSearchValue} onSearchChange={handleEventSearchChange} onSearchClick={handleEventSearchClick} onSearchKeyDown={handleEventSearchKeyDown}/>
             <div>
               <SubTitle margin="0 0 1em">Event List</SubTitle>
-              <EventList />
+              <EventList props={eventData}/>
             </div>
             <Pagination data={pageData} />
           </PageContainer>

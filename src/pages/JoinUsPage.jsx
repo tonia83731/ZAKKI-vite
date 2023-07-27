@@ -8,6 +8,8 @@ import { styled } from "styled-components";
 import { breakpoints } from "../styles/Breakpoints";
 import { MainContainer, PageContainer } from "../styles/Container";
 
+import { dummyJobData } from "../Data/JobData";
+
 import Swal from "sweetalert2";
 
 import { useState } from "react";
@@ -29,7 +31,17 @@ const steps = [
 
 export default function JoinUsPage() {
   const [currentPage, setCurrentPage] = useState(1);
+  const [modalContent, setModalContent] = useState([]);
+  const [modalToggle, setModalToggle] = useState(false)
 
+  const handleInfoClick = (id) => {
+    const jobModal = dummyJobData.filter(prop => prop.id === id)
+    setModalContent(jobModal)
+    setModalToggle(true)
+  }
+  const handleModalClose = () => {
+    setModalToggle(false)
+  }
   const handleNextClick = () => {
     setCurrentPage(currentPage + 1);
   };
@@ -44,7 +56,7 @@ export default function JoinUsPage() {
       <MainContainer>
         <section id="join-us">
           <JoinUsContainer>
-            <JobOptions />
+            <JobOptions onInfoClick={handleInfoClick} />
             <FormContainer>
               <ApplyProgress
                 props={steps}
@@ -61,7 +73,7 @@ export default function JoinUsPage() {
           </JoinUsContainer>
         </section>
       </MainContainer>
-      {/* <JobModal/> */}
+      {modalToggle && <JobModal prop={modalContent} onModalClose={handleModalClose}/>}
     </main>
   );
 }

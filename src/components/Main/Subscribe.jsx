@@ -3,19 +3,32 @@ import { useState } from "react";
 import { styled } from "styled-components";
 import { breakpoints } from "../../styles/Breakpoints";
 import { colorList } from "../../styles/ColorSettings";
+import Swal from "sweetalert2";
 
 export default function Subscribe() {
   const [email, setEmail] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (email.length === 0) return;
-    return alert(`The news will sent to ${email}`);
+  const isValidEmail = (email) => {
+    return /\S+@\S+\.\S+/.test(email);
   };
   const handleChange = (event) => {
     setEmail(event.target.value);
   };
-
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (email.length === 0) return;
+    if (isValidEmail(email)) {
+      Swal.fire({
+        icon: "success",
+        title: `The news will sent to ${email}`,
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: `Oops...${email} is not valid, please try again`,
+      });
+    }
+  };
   return (
     <section id="subscribe">
       <SubscribeContainer>
@@ -110,3 +123,4 @@ const SubscribeSubmit = styled.button`
   font-size: 1em;
   color: ${colorList.white};
 `;
+
