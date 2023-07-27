@@ -4,11 +4,8 @@ import { colorList } from "../styles/ColorSettings"
 import { PageContainer } from "../styles/Container"
 import { SubTitle } from "../styles/Title"
 
-import { Link } from "react-router-dom"
-
-
-
-
+import { Link, useParams } from "react-router-dom"
+import { dummyProgramData } from "../Data/ProgramData"
 import { Guide } from "../components/Main/OneProgram/Guide"
 import DonateCard from "../components/Main/OneProgram/DonateCard"
 import ProgramEventCard from "../components/Main/OneProgram/ProgramEventCard"
@@ -19,57 +16,57 @@ import ProgramEventCard from "../components/Main/OneProgram/ProgramEventCard"
 
 
 export default function OneProgramPage(){
+  const object = useParams()
+  const id = object.id
+  const numId = Number(id)
+  const oneProgramData = dummyProgramData.filter(data => data.id === numId)
+  // console.log(dummyProgramData)
+  // console.log(id)
+  console.log(oneProgramData)
   return (
     <OneProgramContainer>
-      <OneProgramSection id="one-program">
-        <div>
-          <Guide first="Programs" firstLink="/programs" second="Program Title" />
-          <div>
-            <ProgramTitle>Program Title</ProgramTitle>
-            <OneProgramImg src="https://picsum.photos/300" alt="" />
-            <OneProgramParagraph>
-              &nbsp;&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit. Nulla volutpat molestie neque. Proin non ante felis. Integer
-              dignissim ex vel enim varius suscipit. Pellentesque dignissim
-              laoreet sem, ac maximus est consectetur quis. Donec at mollis
-              risus. Aenean venenatis mi rhoncus, elementum turpis nec, semper
-              mi. Fusce consectetur ultrices faucibus. Nulla congue tempor
-              magna, et molestie mi commodo a. Vivamus suscipit enim non mauris
-              maximus, vel laoreet lorem iaculis.
-              <br />
-              &nbsp;&nbsp;Integer pulvinar sit amet turpis ut elementum. Sed
-              pretium a erat eu pharetra. Donec eu nulla luctus ex pulvinar
-              commodo. Vivamus sit amet eleifend purus. Vivamus tempus mi risus,
-              non malesuada massa tincidunt sit amet. Nulla consequat lobortis
-              quam ac maximus. Curabitur maximus risus tristique justo finibus,
-              vel convallis neque rutrum. Cras tincidunt laoreet erat, ac
-              condimentum nibh condimentum ac. Sed vel risus nisl. Aliquam
-              dignissim blandit ligula. Etiam quam neque, pellentesque a
-              placerat sed, sagittis vel neque. Cras orci nibh, rhoncus sed
-              posuere nec, ornare non urna.
-            </OneProgramParagraph>
-          </div>
-          <DonateCard mode="mobile" />
-          <UpcommingEventDiv>
-            <ProgramEventCard />
-            <Link to="/events">
-              <MoreEventLink>More Events</MoreEventLink>
-            </Link>
-          </UpcommingEventDiv>
-          <OneProgramBtnGroup>
-            <Link to="/team">
-              <BorderBtn>Project Team Member &#8250;</BorderBtn>
-            </Link>
-            <Link to="/joinus">
-              <BorderBtn>Become Volunteer &#8250;</BorderBtn>
-            </Link>
-            <Link to="#">
-              <BorderBtn>View Past Event &#8250;</BorderBtn>
-            </Link>
-          </OneProgramBtnGroup>
-        </div>
-        <DonateCard mode="desktop" />
-      </OneProgramSection>
+      {
+        oneProgramData.map((prop) => {
+          return (
+            <OneProgramSection id="one-program">
+              <div>
+                <Guide
+                  first="Programs"
+                  firstLink="/programs"
+                  second={prop.title}
+                  secondLink={`/propgrams/${prop.id}`}
+                />
+                <div>
+                  <ProgramTitle>{prop.title}</ProgramTitle>
+                  <OneProgramImg src={prop.img} alt="" />
+                  <OneProgramParagraph>
+                    &nbsp;&nbsp;{prop.description}
+                  </OneProgramParagraph>
+                </div>
+                <DonateCard mode="mobile" prop={prop} />
+                <UpcommingEventDiv>
+                  <ProgramEventCard />
+                  <Link to="/events">
+                    <MoreEventLink>More Events</MoreEventLink>
+                  </Link>
+                </UpcommingEventDiv>
+                <OneProgramBtnGroup>
+                  <Link to="/team">
+                    <BorderBtn>Project Team Member &#8250;</BorderBtn>
+                  </Link>
+                  <Link to="/joinus">
+                    <BorderBtn>Become Volunteer &#8250;</BorderBtn>
+                  </Link>
+                  <Link to="#">
+                    <BorderBtn>View Past Event &#8250;</BorderBtn>
+                  </Link>
+                </OneProgramBtnGroup>
+              </div>
+              <DonateCard mode="desktop" prop={prop} />
+            </OneProgramSection>
+          );
+        })
+      }
     </OneProgramContainer>
   );
 }

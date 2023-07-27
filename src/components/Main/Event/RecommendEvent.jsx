@@ -7,6 +7,8 @@ import { colorList } from "../../../styles/ColorSettings";
 import { SubTitle2 } from "../../../styles/Title";
 import { EventTimeSVG, EventLocationSVG } from "../../../styles/EventSVG";
 
+import { dummyEventData } from "../../../Data/EventData";
+
 const eventData = [
   {
     id: 1,
@@ -67,12 +69,19 @@ const eventData = [
 ];
 
 export default function RecommendEvent() {
+  const compareDate = (a, b) => {
+    const dateA = new Date(a.date)
+    const dateB = new Date(b.date)
+    return dateA - dateB
+  }
+  const sortData = dummyEventData.sort(compareDate)
+  const recommendData = sortData.slice(0,8)
   return (
     <EventCardGroup>
-      {eventData.map((item) => {
+      {recommendData.map((item) => {
         return (
-          <Link>
-            <EventCard background={item.url} key={item.id}>
+          <Link to={`/events/${item.id}`}>
+            <EventCard background={item.img} key={item.id}>
               <EventCardBody>
                 <SubTitle2 className="title">{item.title}</SubTitle2>
                 <EventCardParagraph>
@@ -84,7 +93,7 @@ export default function RecommendEvent() {
                   </FlexCenter>
                   <FlexCenter>
                     <EventTimeSVG />
-                    <CardItemParagraph>Date: {item.time}</CardItemParagraph>
+                    <CardItemParagraph>Date: {item.date}</CardItemParagraph>
                   </FlexCenter>
                 </EventCardParagraph>
               </EventCardBody>
@@ -130,7 +139,7 @@ export const EventCardBody = styled.div`
   bottom: 0;
   right: 0;
   width: 100%;
-  min-height: 70px;
+  min-height: 135px;
   background-color: ${colorList.white_80};
   padding: 0.5em 1em;
   &:hover {

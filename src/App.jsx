@@ -23,10 +23,10 @@ function App() {
         <Routes>
           <Route index element={<HomePage />} />
           <Route path="stories" element={<StoriesPage />} />
-          <Route path="programs" element={<ProgramPage />}></Route>
-          <Route path="programs/one" element={<OneProgramPage />} />
-          <Route path="events" element={<EventPage />}></Route>
-          <Route path="events/one" element={<OneEventPage />} />
+          <Route path="programs" element={<ProgramPage />} />
+          <Route path="programs/:id" element={<OneProgramPage />} />
+          <Route path="events" element={<EventPage />}/>
+          <Route path="events/:id" element={<OneEventPage />} />
           <Route path="joinus" element={<JoinUs />} />
           <Route path="team" element={<TeamPage />} />
         </Routes>

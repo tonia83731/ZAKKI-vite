@@ -28,18 +28,23 @@ const donateData = [
   },
 ];
 
+export default function DonateCard({ mode, prop }) {
+  const totalPrice = prop.target_donate;
+  const numTotal = Number(totalPrice)
+  const currentPrice = prop.donate_progress;
+  const numCurrent = Number(currentPrice)
+  const status = (numCurrent / numTotal)*100
+  const percentage = status.toFixed(2)*100
 
-export default function DonateCard({ mode }) {
+  console.log(status)
+  console.log(percentage)
+
   const donateItem = donateData.map((item) => {
     return (
       <DonateNumItem key={item.id}>
         <DonateNumCount>
-          <DonateNumCountIcon>
-            {item.icon}
-          </DonateNumCountIcon>
-          <DonateNumCountNumber>
-            {item.num}
-          </DonateNumCountNumber>
+          <DonateNumCountIcon>{item.icon}</DonateNumCountIcon>
+          <DonateNumCountNumber>{item.num}</DonateNumCountNumber>
         </DonateNumCount>
         <DonateName>
           Total
@@ -52,18 +57,62 @@ export default function DonateCard({ mode }) {
   return (
     <DonateCardDiv data-mode={mode}>
       <MainTitle>
-        Rp. <span>000000</span>
+        Rp. <span>{prop.id}</span>
       </MainTitle>
       <DonateCardBody>
         <DontateCardProgress>
           <label for="card-body-progress">Current donate status</label>
           <div>
-            <span>10</span>%
+            <span>{percentage >= 100 ? "100" : percentage }</span>%
           </div>
         </DontateCardProgress>
-        <Progress id="card-body-progress" value="10" max="100"></Progress>
+        <Progress
+          id="card-body-progress"
+          value={percentage >= 100 ? "100" : percentage}
+          max="100"
+        ></Progress>
       </DonateCardBody>
-      <DonateNumDiv>{donateItem}</DonateNumDiv>
+      <DonateNumDiv>
+        <DonateNumItem>
+          <DonateNumCount>
+            <DonateNumCountIcon>
+              <ProgramDonateIcon />
+            </DonateNumCountIcon>
+            <DonateNumCountNumber>{prop.donate}</DonateNumCountNumber>
+          </DonateNumCount>
+          <DonateName>
+            Total
+            <br />
+            Donors
+          </DonateName>
+        </DonateNumItem>
+        <DonateNumItem>
+          <DonateNumCount>
+            <DonateNumCountIcon>
+              <ProgramVolunteerIcon />
+            </DonateNumCountIcon>
+            <DonateNumCountNumber>{prop.volunteer}</DonateNumCountNumber>
+          </DonateNumCount>
+          <DonateName>
+            Total
+            <br />
+            Volunteers
+          </DonateName>
+        </DonateNumItem>
+        <DonateNumItem>
+          <DonateNumCount>
+            <DonateNumCountIcon>
+              <ProgramBeneficiaryIcon />
+            </DonateNumCountIcon>
+            <DonateNumCountNumber>{prop.beneficiary}</DonateNumCountNumber>
+          </DonateNumCount>
+          <DonateName>
+            Total
+            <br />
+            Beneficieries
+          </DonateName>
+        </DonateNumItem>
+      </DonateNumDiv>
       <GreenBgBtn>Donate &rsaquo;</GreenBgBtn>
     </DonateCardDiv>
   );
@@ -111,7 +160,7 @@ const DontateCardProgress = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
-  
+
   font-size: 1em;
   color: ${colorList.black_80};
 `;

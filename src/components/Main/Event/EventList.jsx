@@ -13,29 +13,29 @@ import { dummyEventData } from '../../../Data/EventData';
 
 export default function EventList(){
   return (
-    <Link to="">
       <EventListUL>
         {dummyEventData.map((event) => {
           return (
             <EventItem>
-              <SubTitle2 margin="0 0 0.8em">{event.title}</SubTitle2>
-              <EventCardParagraph>
-                <FlexCenter>
-                  <EventLocationSVG />
-                  <CardItemParagraph>
-                    Location: {event.location}
-                  </CardItemParagraph>
-                </FlexCenter>
-                <FlexCenter>
-                  <EventTimeSVG />
-                  <CardItemParagraph>Date: {event.date}</CardItemParagraph>
-                </FlexCenter>
-              </EventCardParagraph>
+              <Link to={`/events/${event.id}`}>
+                <SubTitle2 margin="0 0 0.8em">{event.title}</SubTitle2>
+                <EventCardParagraph>
+                  <FlexCenter>
+                    <EventLocationSVG />
+                    <CardItemParagraph>
+                      Location: {event.location}
+                    </CardItemParagraph>
+                  </FlexCenter>
+                  <FlexCenter>
+                    <EventTimeSVG />
+                    <CardItemParagraph>Date: {event.date}</CardItemParagraph>
+                  </FlexCenter>
+                </EventCardParagraph>
+              </Link>
             </EventItem>
           );
         })}
       </EventListUL>
-    </Link>
   );
 }
 

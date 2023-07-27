@@ -12,7 +12,7 @@ import { breakpoints } from "../../../styles/Breakpoints";
 export default function ProgramCard() {
   return dummyProgramData.map((item) => {
     return (
-      <Link>
+      <Link to={`/programs/${item.id}`}>
         <CardDiv background={item.img} key={item.id}>
           <CardBody>
             <SubTitle2 className="title">{item.title}</SubTitle2>

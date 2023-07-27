@@ -16,70 +16,76 @@ import { Guide } from "../components/Main/OneProgram/Guide";
 import { ReactComponent as EventTimeIcon } from "../assets/Img/event/event_time.svg";
 import { ReactComponent as EventLocationIcon } from "../assets/Img/event/event_location.svg";
 import { ReactComponent as EventProgramIcon } from "../assets/Img/event/event_program.svg";
-import { ReactComponent as EventBellIcon } from "../assets/Img/event/event_bell.svg";
+
+import { dummyEventData } from "../Data/EventData";
+import { useParams } from "react-router-dom";
 
 export default function OneEventPage() {
+  const object = useParams()
+  const id = object.id
+  const numId = Number(id)
+  const oneEventData = dummyEventData.filter(prop => prop.id === numId)
+  console.log(object)
   return (
     <OneProgramContainer>
-      <OneProgramSection id="one-event">
-        <div>
-          <Guide first="Event" firstLink="/events" second="Event Name" />
-          <div>
-            <ProgramTitle>Event Name</ProgramTitle>
-            <OneProgramImg src="https://picsum.photos/300" alt="" />
-            <OneEventInfo data-mode="mobile">
+     {
+      oneEventData.map((prop) => {
+        return (
+          <OneProgramSection id="one-event">
+            <div>
+              <Guide first="Event" firstLink="/events" second={prop.title} secondLink={`/events/${prop.id}`} />
+              <div>
+                <ProgramTitle>{prop.title}</ProgramTitle>
+                <OneProgramImg src={prop.img} alt="" />
+                <OneEventInfo data-mode="mobile">
+                  <OneEventItem>
+                    <EventTimeIcon />
+                    <span>{prop.date}</span>
+                  </OneEventItem>
+                  <OneEventItem>
+                    <EventLocationIcon />
+                    <span>(Online / Offline) {prop.location}</span>
+                  </OneEventItem>
+                  <OneEventItem>
+                    <EventProgramIcon />
+                    <span>From {prop.program}</span>
+                  </OneEventItem>
+                  <BtnMode data-mode="desktop">
+                    <GreenBgBtn>Book the Event &#8250;</GreenBgBtn>
+                  </BtnMode>
+                </OneEventInfo>
+                <div>
+                  <SubTitle2>Description</SubTitle2>
+                  <OneProgramParagraph>
+                    &nbsp;&nbsp;{prop.description}
+                  </OneProgramParagraph>
+                </div>
+                <BtnMode data-mode="mobile">
+                  <GreenBgBtn>Book the Event &#8250;</GreenBgBtn>
+                </BtnMode>
+              </div>
+            </div>
+            <OneEventInfo data-mode="desktop">
               <OneEventItem>
                 <EventTimeIcon />
-                <span>04/27/2023, 1pm-5pm</span>
+                <span>{prop.date}</span>
               </OneEventItem>
               <OneEventItem>
                 <EventLocationIcon />
-                <span>(Online / Offline) Indonesia, Jakarta</span>
+                <span>(Online / Offline) {prop.location}</span>
               </OneEventItem>
               <OneEventItem>
                 <EventProgramIcon />
-                <span>From Program Name</span>
+                <span>From {prop.program}</span>
               </OneEventItem>
               <BtnMode data-mode="desktop">
                 <GreenBgBtn>Book the Event &#8250;</GreenBgBtn>
               </BtnMode>
             </OneEventInfo>
-            <div>
-              <SubTitle2>Description</SubTitle2>
-              <OneProgramParagraph>
-                &nbsp;&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit. Nulla volutpat molestie neque. Proin non ante felis.
-                Integer dignissim ex vel enim varius suscipit. Pellentesque
-                dignissim laoreet sem, ac maximus est consectetur quis. Donec at
-                mollis risus. Aenean venenatis mi rhoncus, elementum turpis nec,
-                semper mi. Fusce consectetur ultrices faucibus. Nulla congue
-                tempor magna, et molestie mi commodo a. Vivamus suscipit enim
-                non mauris maximus, vel laoreet lorem iaculis.
-              </OneProgramParagraph>
-            </div>
-            <BtnMode data-mode="mobile">
-              <GreenBgBtn>Book the Event &#8250;</GreenBgBtn>
-            </BtnMode>
-          </div>
-        </div>
-        <OneEventInfo data-mode="desktop">
-          <OneEventItem>
-            <EventTimeIcon />
-            <span>04/27/2023, 1pm-5pm</span>
-          </OneEventItem>
-          <OneEventItem>
-            <EventLocationIcon />
-            <span>(Online / Offline) Indonesia, Jakarta</span>
-          </OneEventItem>
-          <OneEventItem>
-            <EventProgramIcon />
-            <span>From Program Name</span>
-          </OneEventItem>
-          <BtnMode data-mode="desktop">
-            <GreenBgBtn>Book the Event &#8250;</GreenBgBtn>
-          </BtnMode>
-        </OneEventInfo>
-      </OneProgramSection>
+          </OneProgramSection>
+        );
+      })
+     }
     </OneProgramContainer>
   );
 }
