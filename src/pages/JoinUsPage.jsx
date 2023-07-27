@@ -32,38 +32,46 @@ const steps = [
 export default function JoinUsPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [modalContent, setModalContent] = useState([]);
-  const [modalToggle, setModalToggle] = useState(false)
+  const [modalToggle, setModalToggle] = useState(false);
+
+  const [jobValue, setJobValue] = useState("");
 
   const handleInfoClick = (id) => {
-    const jobModal = dummyJobData.filter(prop => prop.id === id)
-    setModalContent(jobModal)
-    setModalToggle(true)
-  }
+    const jobModal = dummyJobData.filter((prop) => prop.id === id);
+    setModalContent(jobModal);
+    setModalToggle(true);
+  };
   const handleModalClose = () => {
-    setModalToggle(false)
-  }
+    setModalToggle(false);
+  };
   const handleNextClick = () => {
     setCurrentPage(currentPage + 1);
   };
   const handlePrevClick = () => {
     setCurrentPage(currentPage - 1);
   };
+  const handleJobOptionsChange = (e) => {
+    setJobValue(e.target.value);
+  };
   const totalPage = steps.length;
   const width = `${(100 / (totalPage - 1)) * (currentPage - 1)}%`;
-
+  console.log(jobValue)
   return (
     <main>
       <MainContainer>
         <section id="join-us">
           <JoinUsContainer>
-            <JobOptions onInfoClick={handleInfoClick} />
+            <JobOptions
+              onInfoClick={handleInfoClick}
+              onJobOptionsChange={handleJobOptionsChange}
+            />
             <FormContainer>
               <ApplyProgress
                 props={steps}
                 width={width}
                 activeStep={currentPage}
               />
-              <Steps activeStep={currentPage} />
+              <Steps activeStep={currentPage} jobValue={jobValue} />
               <ApplyProgressControl
                 onPreClick={handlePrevClick}
                 onNextClick={handleNextClick}
@@ -73,7 +81,9 @@ export default function JoinUsPage() {
           </JoinUsContainer>
         </section>
       </MainContainer>
-      {modalToggle && <JobModal prop={modalContent} onModalClose={handleModalClose}/>}
+      {modalToggle && (
+        <JobModal prop={modalContent} onModalClose={handleModalClose} />
+      )}
     </main>
   );
 }

@@ -10,7 +10,7 @@ import { CardDiv, CardBody, CardParagraph } from "../../Program/ProgramCard";
 import { FlexCenter } from "../../Event/RecommendEvent";
 import { SubTitle2 } from "../../../../styles/Title";
 
-export default function JobOptions({ onInfoClick }) {
+export default function JobOptions({ onInfoClick, onJobOptionsChange }) {
   const jobCard = dummyJobData.map((job) => {
     return (
       <>
@@ -19,6 +19,7 @@ export default function JobOptions({ onInfoClick }) {
           id={job.name}
           name="job-option"
           value={job.title}
+          onChange={onJobOptionsChange}
         />
         <JobCardLabel background={job.url} htmlFor={job.name}>
           <JobCardBody>

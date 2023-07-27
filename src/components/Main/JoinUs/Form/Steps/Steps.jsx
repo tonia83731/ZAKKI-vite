@@ -3,21 +3,24 @@ import StepTwo from './StepTwo'
 import StepThree from './StepThree'
 import StepDone from './StepDone'
 
-function StepsPageChange({step}){
-  if(step === 1) {return <StepOne/>}
-  else if (step === 2) {
+function StepsPageChange({ step, jobValue }) {
+  if (step === 1) {
+    return <StepOne jobValue={jobValue}/>;
+  } else if (step === 2) {
     return <StepTwo />;
-  }
-  else if (step === 3) {
+  } else if (step === 3) {
     return <StepThree />;
   }
 }
 
 
-export default function Steps({ activeStep }) {
+export default function Steps({ activeStep, jobValue }) {
   return (
     <section className="form-section">
-      <StepsPageChange step={activeStep} />
+      <StepsPageChange
+        step={activeStep}
+        jobValue={jobValue}
+      />
     </section>
   );
 }

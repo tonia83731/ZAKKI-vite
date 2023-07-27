@@ -4,7 +4,9 @@ import { CheckboxResponse } from "../../../../RepeatComponent/CheckboxResponse"
 
 import { styled } from "styled-components"
 import { breakpoints } from "../../../../../styles/Breakpoints"
+import { colorList } from "../../../../../styles/ColorSettings"
 import { SubTitle2 } from "../../../../../styles/Title"
+import { ResponseGroup,FormLabel } from "../../../../RepeatComponent/ShortResponse"
 
 const locationData = [
   {
@@ -52,7 +54,7 @@ const policyData = [
 
 
 
-export default function StepOne(){
+export default function StepOne({jobValue}){
   return (
     <form>
       <StepSubTitle>
@@ -91,12 +93,14 @@ export default function StepOne(){
           data={timeData}
           isRequired="true"
         />
-        <ShortResponse
-          name="Job Title"
-          type="text"
-          placeholder="UX Designer"
-          isRequired="true"
-        />
+        <ResponseGroup>
+          <FormLabel>
+            Job Title <span>*</span>
+          </FormLabel>
+          <JobInput>
+            <p>{jobValue}</p>
+          </JobInput>
+        </ResponseGroup>
         <ShortResponse
           name="Time Zone"
           type="text"
@@ -118,4 +122,17 @@ export const StepSection = styled.section`
   @media screen and (min-width: ${breakpoints.desktop}) {
     height: 655px;
   }
+`;
+
+const JobInput = styled.div`
+  width: 100%;
+  height: 2rem;
+  line-height: 2em;
+  border: 1px solid ${colorList.neutral_60};
+  border-radius: 5px;
+  padding: 0 10px;
+  font-size: 0.75em;
+  color: ${colorList.neutral_70};
+  display:flex;
+  align-items: center;
 `;

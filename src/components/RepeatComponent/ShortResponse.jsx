@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import { colorList } from "../../styles/ColorSettings";
 
-export function ShortResponse({ name, type, placeholder, isRequired, margin }) {
+export function ShortResponse({ name, type, placeholder, isRequired, margin, inputValue, onChange }) {
   return (
     <ResponseGroup margin={margin}>
        <FormLabel>
@@ -11,6 +11,8 @@ export function ShortResponse({ name, type, placeholder, isRequired, margin }) {
         type={type}
         placeholder={placeholder}
         required={isRequired}
+        value={inputValue}
+        onChange={onChange}
       />
     </ResponseGroup>
   );
