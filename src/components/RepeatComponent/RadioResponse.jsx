@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import { breakpoints } from "../../styles/Breakpoints";
 import { ResponseGroup, FormLabel } from "./ShortResponse";
 
-export function RadioResponse({ className, name, data, isRequired }) {
+export function RadioResponse({ name, data, isRequired }) {
   const inputRadioItem = data.map((item, index) => {
     return (
       <RadioWrapper key={item.id}>

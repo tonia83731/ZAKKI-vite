@@ -26,14 +26,14 @@ const programEventData = [
   },
 ];
 
-export default function ProgramEventCard() {
+export default function ProgramEventCard({props}) {
   return (
     <UpcommingEventList>
-      {programEventData.map((item) => {
+      {props.map((item) => {
         return (
-          <UpcommingEventCard background={item.url} key={item.id}>
+          <UpcommingEventCard background={item.img} key={item.id}>
             <EventCardBody>
-              <Link to="">
+              <Link to={`/events/${item.id}`}>
                 <SubTitle2>{item.title}</SubTitle2>
               </Link>
               <EventCardParagraph>
@@ -45,7 +45,7 @@ export default function ProgramEventCard() {
                 </FlexCenter>
                 <FlexCenter>
                   <EventTimeSVG />
-                  <CardItemParagraph>Date: {item.time}</CardItemParagraph>
+                  <CardItemParagraph>Date: {item.date}</CardItemParagraph>
                 </FlexCenter>
               </EventCardParagraph>
             </EventCardBody>
@@ -57,11 +57,14 @@ export default function ProgramEventCard() {
 }
 
 const UpcommingEventList = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-gap: 0.5em;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
   width: 100%;
   @media screen and (min-width: ${breakpoints.tablet}) {
-    flex-direction: row;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 100%;
   }
 `;
 

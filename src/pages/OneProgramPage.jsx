@@ -1,72 +1,122 @@
-import { styled } from "styled-components"
-import { breakpoints } from "../styles/Breakpoints"
-import { colorList } from "../styles/ColorSettings"
-import { PageContainer } from "../styles/Container"
-import { SubTitle } from "../styles/Title"
+import { styled } from "styled-components";
+import { breakpoints } from "../styles/Breakpoints";
+import { colorList } from "../styles/ColorSettings";
+import { PageContainer } from "../styles/Container";
+import { SubTitle } from "../styles/Title";
 
-import { Link, useParams } from "react-router-dom"
-import { dummyProgramData } from "../Data/ProgramData"
-import { Guide } from "../components/Main/OneProgram/Guide"
-import DonateCard from "../components/Main/OneProgram/DonateCard"
-import ProgramEventCard from "../components/Main/OneProgram/ProgramEventCard"
+import { Link, useParams } from "react-router-dom";
+import { dummyProgramData } from "../Data/ProgramData";
+import { dummyEventData } from "../Data/EventData";
+import { Guide } from "../components/Main/OneProgram/Guide";
+import DonateCard from "../components/Main/OneProgram/DonateCard";
+import ProgramEventCard from "../components/Main/OneProgram/ProgramEventCard";
+import DonateModal from "../components/Main/OneProgram/DonateModal";
+
+import { getDataInObject } from "../utilities/dataInData";
+
+import { useState } from "react";
+
+export default function OneProgramPage() {
+  const [donateToggle, setDonateToggle] = useState(false);
+  const [donateModalContent, setDonateModalContent] = useState([]);
+
+  const [nameValue, setNameValue] = useState("")
+  const [emailValue, setEmailValue] = useState("")
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const object = useParams();
+  const id = object.id;
+  const numId = Number(id);
+  const oneProgramData = dummyProgramData.filter((data) => data.id === numId);
+  const eventInProgram = getDataInObject(oneProgramData, dummyEventData)
+  const allEvent = Object.values(eventInProgram)
+  
+  const handleDonateClick = (id) => {
+    const modalData = dummyProgramData.filter((data) => data.id === id);
+    setDonateToggle(true);
+    setDonateModalContent(modalData);
+  };
+  const handleDonateSubmit = (e) => {
+    e.preventDefault()
+    if(nameValue !== "" && emailValue !== ""){
+      setIsSubmitted(true)
+    }
+    setDonateToggle(false)
+  };
+  const handleNameChange = (e) => {
+    setNameValue(e.target.value);
+  };
+  const handleEmailChange = (e) => {
+    setEmailValue(e.target.value);
+  };
+
+  if(isSubmitted){
+    window.location.href = "https://www.paypal.com/tw/home";
+  }
 
 
 
-
-
-
-export default function OneProgramPage(){
-  const object = useParams()
-  const id = object.id
-  const numId = Number(id)
-  const oneProgramData = dummyProgramData.filter(data => data.id === numId)
-  // console.log(dummyProgramData)
-  // console.log(id)
-  console.log(oneProgramData)
   return (
     <OneProgramContainer>
-      {
-        oneProgramData.map((prop) => {
-          return (
-            <OneProgramSection id="one-program">
+      {oneProgramData.map((prop) => {
+        return (
+          <OneProgramSection id="one-program">
+            <div>
+              <Guide
+                first="Programs"
+                firstLink="/programs"
+                second={prop.title}
+                secondLink={`/propgrams/${prop.id}`}
+              />
               <div>
-                <Guide
-                  first="Programs"
-                  firstLink="/programs"
-                  second={prop.title}
-                  secondLink={`/propgrams/${prop.id}`}
-                />
-                <div>
-                  <ProgramTitle>{prop.title}</ProgramTitle>
-                  <OneProgramImg src={prop.img} alt="" />
-                  <OneProgramParagraph>
-                    &nbsp;&nbsp;{prop.description}
-                  </OneProgramParagraph>
-                </div>
-                <DonateCard mode="mobile" prop={prop} />
-                <UpcommingEventDiv>
-                  <ProgramEventCard />
-                  <Link to="/events">
-                    <MoreEventLink>More Events</MoreEventLink>
-                  </Link>
-                </UpcommingEventDiv>
-                <OneProgramBtnGroup>
-                  <Link to="/team">
-                    <BorderBtn>Project Team Member &#8250;</BorderBtn>
-                  </Link>
-                  <Link to="/joinus">
-                    <BorderBtn>Become Volunteer &#8250;</BorderBtn>
-                  </Link>
-                  <Link to="#">
-                    <BorderBtn>View Past Event &#8250;</BorderBtn>
-                  </Link>
-                </OneProgramBtnGroup>
+                <ProgramTitle>{prop.title}</ProgramTitle>
+                <OneProgramImg src={prop.img} alt="" />
+                <OneProgramParagraph>
+                  &nbsp;&nbsp;{prop.description}
+                </OneProgramParagraph>
               </div>
-              <DonateCard mode="desktop" prop={prop} />
-            </OneProgramSection>
-          );
-        })
-      }
+              <DonateCard
+                mode="mobile"
+                prop={prop}
+                onDonateClick={handleDonateClick}
+              />
+              <UpcommingEventDiv>
+                <ProgramEventCard props={allEvent} />
+                <Link to="/events">
+                  <MoreEventLink>More Events</MoreEventLink>
+                </Link>
+              </UpcommingEventDiv>
+              <OneProgramBtnGroup>
+                <Link to="/team">
+                  <BorderBtn>Project Team Member &#8250;</BorderBtn>
+                </Link>
+                <Link to="/joinus">
+                  <BorderBtn>Become Volunteer &#8250;</BorderBtn>
+                </Link>
+                <Link to="#">
+                  <BorderBtn>View Past Event &#8250;</BorderBtn>
+                </Link>
+              </OneProgramBtnGroup>
+            </div>
+            <DonateCard
+              mode="desktop"
+              prop={prop}
+              onDonateClick={handleDonateClick}
+            />
+          </OneProgramSection>
+        );
+      })}
+      {donateToggle && (
+        <DonateModal
+          prop={donateModalContent}
+          nameValue={nameValue}
+          emailValue={emailValue}
+          onModalClose={() => setDonateToggle(false)}
+          onDonateSubmit={handleDonateSubmit}
+          onNameChange={handleNameChange}
+          onEmailChange={handleEmailChange}
+        />
+      )}
     </OneProgramContainer>
   );
 }
@@ -100,11 +150,11 @@ export const OneProgramImg = styled.img`
 
 export const OneProgramParagraph = styled.p`
   font-size: 14px;
-  color: ${colorList.black_80}
-`
+  color: ${colorList.black_80};
+`;
 
 const UpcommingEventDiv = styled.div`
-  padding:2em 0;
+  padding: 2em 0;
 `;
 
 const MoreEventLink = styled.div`
@@ -151,4 +201,9 @@ const BorderBtn = styled.div`
   @media screen and (min-width: ${breakpoints.tablet}) {
     margin-bottom: 0;
   }
+`;
+
+const ErrorCaption = styled.p`
+  font-size: 0.75em;
+  color: ${colorList.error};
 `;

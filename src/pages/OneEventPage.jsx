@@ -13,6 +13,7 @@ import { GreenBgBtn } from "../components/Main/OneProgram/DonateCard";
 
 import { Guide } from "../components/Main/OneProgram/Guide";
 
+
 import { ReactComponent as EventTimeIcon } from "../assets/Img/event/event_time.svg";
 import { ReactComponent as EventLocationIcon } from "../assets/Img/event/event_location.svg";
 import { ReactComponent as EventProgramIcon } from "../assets/Img/event/event_program.svg";
@@ -113,9 +114,11 @@ const OneEventInfo = styled.div`
       display: none;
     }
     &[data-mode="desktop"] {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       width: 100%;
-      height: 200px; 
+      height: 300px; 
       padding: 1.5em 2em;
       margin-top: 7rem;
       border-radius: 10px;
@@ -124,7 +127,7 @@ const OneEventInfo = styled.div`
   }
 `;
 const OneEventItem = styled.div`
-  font-size: 1em;
+  font-size: 0.9em;
   color: ${colorList.green_focus_80};
   display: flex;
   align-items: center;

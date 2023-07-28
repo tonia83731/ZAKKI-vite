@@ -1,25 +1,37 @@
 import { styled } from "styled-components";
 import { colorList } from "../../styles/ColorSettings";
 
-
 // pagination
-export function Pagination({ data }) {
+export function Pagination({
+  data,
+  currentPage,
+  onPrevClick,
+  onNextClick,
+  onPageClick,
+}) {
   const pageItem = data.map((page) => {
     return (
       <PaginationLink
         href="#"
-        key={page.id}
-        active={page.isActive}
+        key={page}
+        active={currentPage === page}
+        onClick={() => onPageClick(page)}
       >
-        {page.id}
+        {page}
       </PaginationLink>
     );
   });
   return (
     <PaginationDIV>
-      <PaginationLink href="#"> &laquo;</PaginationLink>
+      <PaginationLink href="#" onClick={onPrevClick}>
+        {" "}
+        &laquo;
+      </PaginationLink>
       {pageItem}
-      <PaginationLink href="#"> &raquo;</PaginationLink>
+      <PaginationLink href="#" onClick={onNextClick}>
+        {" "}
+        &raquo;
+      </PaginationLink>
     </PaginationDIV>
   );
 }

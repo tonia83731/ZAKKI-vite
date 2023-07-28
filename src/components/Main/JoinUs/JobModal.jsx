@@ -51,7 +51,7 @@ export default function JobModal({prop, onModalClose}) {
   );
 }
 
-const JobModalSection = styled.section`
+export const JobModalSection = styled.section`
   position: fixed;
   z-index: 999;
   top: 50%;

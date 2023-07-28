@@ -7,78 +7,72 @@ import { colorList } from "../../../styles/ColorSettings";
 import { SubTitle2 } from "../../../styles/Title";
 import { EventTimeSVG, EventLocationSVG } from "../../../styles/EventSVG";
 
-import { dummyEventData } from "../../../Data/EventData";
+// const eventData = [
+//   {
+//     id: 1,
+//     title: "Fresh Fashion",
+//     time: "05/06/2023 10:23:31 PM",
+//     location: "Dki Jakarta, Indonesia",
+//     url: "https://picsum.photos/300?text=1",
+//   },
+//   {
+//     id: 2,
+//     title: "Trendy Threads",
+//     time: "04/05/2024 03:36:55 AM",
+//     location: "Dki Jakarta, Indonesia",
+//     url: "https://picsum.photos/300?text=2",
+//   },
+//   {
+//     id: 3,
+//     title: "Glam Gals",
+//     time: "03/18/2023 05:24:41 AM",
+//     location: "Jawa Tengah, Indonesia",
+//     url: "https://picsum.photos/300?text=3",
+//   },
+//   {
+//     id: 4,
+//     title: "Active Aging",
+//     time: "12/09/2023 09:32:29 AM",
+//     location: "Jawa Barat, Indonesia",
+//     url: "https://picsum.photos/300?text=4",
+//   },
+//   {
+//     id: 5,
+//     title: "Elderly Empowerment",
+//     time: "11/06/2023 10:10:10 AM",
+//     location: "Jawa Barat, Indonesia",
+//     url: "https://picsum.photos/300?text=5",
+//   },
+//   {
+//     id: 6,
+//     title: "wise Wellness",
+//     time: "06/08/2023 01:44:01 PM",
+//     location: "Dki Jakarta, Indonesia",
+//     url: "https://picsum.photos/300?text=6",
+//   },
+//   {
+//     id: 7,
+//     title: "Sliver Strength",
+//     time: "08/30/2023 07:24:20 AM",
+//     location: "Dki Jakarta, Indonesia",
+//     url: "https://picsum.photos/300?text=7",
+//   },
+//   {
+//     id: 8,
+//     title: "Golder Generation",
+//     time: "01/05/2023 09:46:19 AM",
+//     location: "Jawa Tengah, Indonesia",
+//     url: "https://picsum.photos/300?text=8",
+//   },
+// ];
 
-const eventData = [
-  {
-    id: 1,
-    title: "Fresh Fashion",
-    time: "05/06/2023 10:23:31 PM",
-    location: "Dki Jakarta, Indonesia",
-    url: "https://picsum.photos/300?text=1",
-  },
-  {
-    id: 2,
-    title: "Trendy Threads",
-    time: "04/05/2024 03:36:55 AM",
-    location: "Dki Jakarta, Indonesia",
-    url: "https://picsum.photos/300?text=2",
-  },
-  {
-    id: 3,
-    title: "Glam Gals",
-    time: "03/18/2023 05:24:41 AM",
-    location: "Jawa Tengah, Indonesia",
-    url: "https://picsum.photos/300?text=3",
-  },
-  {
-    id: 4,
-    title: "Active Aging",
-    time: "12/09/2023 09:32:29 AM",
-    location: "Jawa Barat, Indonesia",
-    url: "https://picsum.photos/300?text=4",
-  },
-  {
-    id: 5,
-    title: "Elderly Empowerment",
-    time: "11/06/2023 10:10:10 AM",
-    location: "Jawa Barat, Indonesia",
-    url: "https://picsum.photos/300?text=5",
-  },
-  {
-    id: 6,
-    title: "wise Wellness",
-    time: "06/08/2023 01:44:01 PM",
-    location: "Dki Jakarta, Indonesia",
-    url: "https://picsum.photos/300?text=6",
-  },
-  {
-    id: 7,
-    title: "Sliver Strength",
-    time: "08/30/2023 07:24:20 AM",
-    location: "Dki Jakarta, Indonesia",
-    url: "https://picsum.photos/300?text=7",
-  },
-  {
-    id: 8,
-    title: "Golder Generation",
-    time: "01/05/2023 09:46:19 AM",
-    location: "Jawa Tengah, Indonesia",
-    url: "https://picsum.photos/300?text=8",
-  },
-];
 
-export default function RecommendEvent() {
-  const compareDate = (a, b) => {
-    const dateA = new Date(a.date)
-    const dateB = new Date(b.date)
-    return dateA - dateB
-  }
-  const sortData = dummyEventData.sort(compareDate)
-  const recommendData = sortData.slice(0,8)
+
+
+export default function RecommendEvent({props}) {
   return (
     <EventCardGroup>
-      {recommendData.map((item) => {
+      {props.map((item) => {
         return (
           <Link to={`/events/${item.id}`}>
             <EventCard background={item.img} key={item.id}>

@@ -15,31 +15,26 @@ import FilterList from "./FilterList";
 const programFilterData = [
   {
     id: 1,
-    name: "Most Popular",
-    value: "Popular",
-    isChecked: false,
-  },
-  {
-    id: 2,
-    name: "Most Current",
-    value: "Current",
+    name: "From New to Old",
+    value: "New",
     isChecked: true,
   },
   {
-    id: 3,
-    name: "From New to Old",
-    value: "New",
-    isChecked: false,
-  },
-  {
-    id: 4,
+    id: 2,
     name: "From Old to New",
     value: "Old",
     isChecked: false,
   },
 ];
 
-export default function Search({searchValue, onSearchChange, onSearchClick, onSearchKeyDown}) {
+export default function Search({
+  defaultValue,
+  searchValue,
+  onSearchChange,
+  onSearchClick,
+  onSearchKeyDown,
+  onFilterChange,
+}) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -61,7 +56,8 @@ export default function Search({searchValue, onSearchChange, onSearchClick, onSe
           key={item.id}
           id={item.value}
           value={item.value}
-          defaultChecked={item.value === "Current"}
+          defaultChecked={item.value ===  defaultValue }
+          onChange={onFilterChange}
         />
         <FilterRadioLabel htmlFor={item.value}>{item.name}</FilterRadioLabel>
       </FilterRadioDiv>
@@ -197,7 +193,7 @@ const FilterToggleLabel = styled.label`
       fill: ${colorList.black_80};
     }
   }
-  @media screen and (min-width: 550px){
+  @media screen and (min-width: 550px) {
     svg {
       margin-left: 0.5em;
     }

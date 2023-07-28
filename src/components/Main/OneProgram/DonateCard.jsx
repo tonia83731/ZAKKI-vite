@@ -28,7 +28,7 @@ const donateData = [
   },
 ];
 
-export default function DonateCard({ mode, prop }) {
+export default function DonateCard({ mode, prop, onDonateClick }) {
   const totalPrice = prop.target_donate;
   const numTotal = Number(totalPrice)
   const currentPrice = prop.donate_progress;
@@ -36,24 +36,6 @@ export default function DonateCard({ mode, prop }) {
   const status = (numCurrent / numTotal)*100
   const percentage = status.toFixed(2)*100
 
-  console.log(status)
-  console.log(percentage)
-
-  const donateItem = donateData.map((item) => {
-    return (
-      <DonateNumItem key={item.id}>
-        <DonateNumCount>
-          <DonateNumCountIcon>{item.icon}</DonateNumCountIcon>
-          <DonateNumCountNumber>{item.num}</DonateNumCountNumber>
-        </DonateNumCount>
-        <DonateName>
-          Total
-          <br />
-          {item.name}
-        </DonateName>
-      </DonateNumItem>
-    );
-  });
   return (
     <DonateCardDiv data-mode={mode}>
       <MainTitle>
@@ -63,7 +45,7 @@ export default function DonateCard({ mode, prop }) {
         <DontateCardProgress>
           <label for="card-body-progress">Current donate status</label>
           <div>
-            <span>{percentage >= 100 ? "100" : percentage }</span>%
+            <span>{percentage >= 100 ? "100" : percentage}</span>%
           </div>
         </DontateCardProgress>
         <Progress
@@ -113,7 +95,7 @@ export default function DonateCard({ mode, prop }) {
           </DonateName>
         </DonateNumItem>
       </DonateNumDiv>
-      <GreenBgBtn>Donate &rsaquo;</GreenBgBtn>
+      <GreenBgBtn onClick={() => onDonateClick?.(prop.id)}>Donate &rsaquo;</GreenBgBtn>
     </DonateCardDiv>
   );
 }
