@@ -67,8 +67,7 @@ const JobOptionsContainer = styled.div`
     padding-right: 1em;
     overflow-x: hidden;
     overflow-y: scroll;
-    height: 124vh;
-    min-height: 920px;
+    height: 760px;
   }
 `;
 

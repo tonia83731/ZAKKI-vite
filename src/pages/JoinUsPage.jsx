@@ -34,7 +34,31 @@ export default function JoinUsPage() {
   const [modalContent, setModalContent] = useState([]);
   const [modalToggle, setModalToggle] = useState(false);
 
+  const [isGetNewsChecked, setIsGetNewsChecked] = useState(false);
+  const [isPolicyChecked, setIsPolicyChecked] = useState(false);
+
   const [jobValue, setJobValue] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    age: 18,
+    phone: "",
+    email: "",
+    getNews: isGetNewsChecked,
+    policy: isPolicyChecked,
+    location: "offline",
+    time: "anytime",
+    timeZone: "",
+    file: "",
+    otherFile: "",
+    comment: "",
+  });
+  const [errors, setErrors] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    timeZone: "",
+    file: "",
+  });
 
   const handleInfoClick = (id) => {
     const jobModal = dummyJobData.filter((prop) => prop.id === id);
@@ -53,9 +77,33 @@ export default function JoinUsPage() {
   const handleJobOptionsChange = (e) => {
     setJobValue(e.target.value);
   };
+  const handleGetNewsChange = () => {
+    setIsGetNewsChecked(!isGetNewsChecked);
+    setFormData({
+      ...formData, getNews: isGetNewsChecked
+    })
+  };
+  const handlePolicyChange = () => {
+    setIsPolicyChecked(!isPolicyChecked);
+    setFormData({
+      ...formData,
+      policy: isPolicyChecked,
+    });
+  };
+
+
+  const handleFormSubmit = () => {
+    Swal.fire({
+      icon: "success",
+      title: "Your application has been submitted",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    setCurrentPage(1)
+  }
+
   const totalPage = steps.length;
   const width = `${(100 / (totalPage - 1)) * (currentPage - 1)}%`;
-  console.log(jobValue)
   return (
     <main>
       <MainContainer>
@@ -66,17 +114,25 @@ export default function JoinUsPage() {
               onJobOptionsChange={handleJobOptionsChange}
             />
             <FormContainer>
-              <ApplyProgress
-                props={steps}
-                width={width}
-                activeStep={currentPage}
-              />
-              <Steps activeStep={currentPage} jobValue={jobValue} />
-              <ApplyProgressControl
-                onPreClick={handlePrevClick}
-                onNextClick={handleNextClick}
-                activeStep={currentPage}
-              />
+                <ApplyProgress
+                  props={steps}
+                  width={width}
+                  activeStep={currentPage}
+                />
+                <Steps
+                  activeStep={currentPage}
+                  jobValue={jobValue}
+                  formData={formData}
+                  setFormData={setFormData}
+                  onGetNewsChange={handleGetNewsChange}
+                  onPolicyChange={handlePolicyChange}
+                />
+                <ApplyProgressControl
+                  onPreClick={handlePrevClick}
+                  onNextClick={handleNextClick}
+                  onFormSubmit={handleFormSubmit}
+                  activeStep={currentPage}
+                />
             </FormContainer>
           </JoinUsContainer>
         </section>

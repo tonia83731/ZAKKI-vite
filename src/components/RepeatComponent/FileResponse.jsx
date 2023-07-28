@@ -3,58 +3,49 @@ import { breakpoints } from "../../styles/Breakpoints";
 import { colorList } from "../../styles/ColorSettings";
 import { ResponseGroup, FormLabel } from "./ShortResponse";
 
-const fileData = [
-  {
-    id: 1,
-    title1: "Resume / CV",
-    for: "resume",
-    accept: ".doc,.docx,.pdf",
-    isRequired: true,
-  },
-  {
-    id: 2,
-    title1: "Other Documents",
-    title2: "(Portfolio, Recommendation letter, etc.)",
-    for: "other-doc",
-    accept: ".doc,.docx,.pdf",
-    isRequired: false,
-  },
-];
-
-export function FileResponse() {
-  return fileData.map((item) => {
-    return (
-      <ResponseGroup key={item.id}>
-        <FormLabel>
-          {item.title1} {item.isRequired === true ? <span>*</span> : ""}
-          <br />
-          {item.title2}
-        </FormLabel>
-        <FileInput
-          type="file"
-          className="input-file-item"
-          id={item.for}
-          accept={item.accept}
-          required={item.isRequired}
-        ></FileInput>
-      </ResponseGroup>
-    );
-  });
+export function FileResponse({forId, title1, title2, accept, isRequired, onChange, title}) {
+  return (
+    <FileResponseGroup>
+      <FormLabel>
+        {title1} {isRequired === "true" ? <span>*</span> : ""}
+        <br />
+        {title2 || ""}
+      </FormLabel>
+      <FileInput
+        type="file"
+        name={forId}
+        id={forId}
+        accept={accept || ".doc,.docx,.pdf"}
+        required={isRequired}
+        onChange={onChange}
+        title={title}
+      ></FileInput>
+      <FileLabel htmlFor={forId}>{title}</FileLabel>
+    </FileResponseGroup>
+  );
 }
 
+const FileResponseGroup = styled(ResponseGroup)`
+  position: relative;
+`
 
 
 const FileInput = styled.input`
+  display: none;
+`; 
+
+const FileLabel = styled.label`
   display: flex;
+  justify-content: center;
   width: 100%;
   height: 100px;
   line-height: 100px;
-  text-align-last: center;
   border: 1px solid ${colorList.neutral_60};
   border-radius: 5px;
   padding: 0 10px;
   font-size: 0.75em;
   color: ${colorList.neutral_70};
+  cursor:pointer;
   &:focus {
     border: 2px solid ${colorList.green_focus};
   }
@@ -62,21 +53,4 @@ const FileInput = styled.input`
     height: 135px;
     line-height: 135px;
   }
-`; 
-
-// const FileLabel = styled.label`
-//   display: flex;
-//   width: 100%;
-//   height: 20vh;
-//   min-height: 135px;
-//   justify-content: center;
-//   align-items: center;
-//   border: 1px solid ${colorList.neutral_60};
-//   border-radius: 5px;
-//   padding: 0 10px;
-//   font-size: 0.75em;
-//   color: ${colorList.neutral_70};
-//   &:focus {
-//     border: 2px solid ${colorList.green_focus};
-//   }
-// `;
+`;

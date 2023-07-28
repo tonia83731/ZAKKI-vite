@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import { colorList } from "../../styles/ColorSettings";
 
-export function ShortResponse({ name, type, placeholder, isRequired, margin, inputValue, onChange }) {
+export function ShortResponse({ name, type, placeholder, pattern, isRequired, margin, inputValue, onChange }) {
   return (
     <ResponseGroup margin={margin}>
        <FormLabel>
@@ -10,6 +10,7 @@ export function ShortResponse({ name, type, placeholder, isRequired, margin, inp
       <FormInput
         type={type}
         placeholder={placeholder}
+        pattern={pattern || ""}
         required={isRequired}
         value={inputValue}
         onChange={onChange}
@@ -37,8 +38,13 @@ export const FormInput = styled.input`
   border-radius: 5px;
   padding: 0 10px;
   font-size: 0.75em;
-  color: ${colorList.neutral_70};
+  font-weight: 600;
+  color: ${colorList.black_80};
   &:focus {
     border: 2px solid ${colorList.green_focus};
+  }
+  &::placeholder {
+    color: ${colorList.neutral_60};
+    font-weight: 400;
   }
 `;

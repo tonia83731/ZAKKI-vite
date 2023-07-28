@@ -27,7 +27,7 @@ export default function ApplyProgressControl({
       {activeStep !== 3 ? (
         <StepBtnStyle onClick={onNextClick}>Next</StepBtnStyle>
       ) : (
-        <StepBtnStyle onSubmit={onFormSubmit}>Submit</StepBtnStyle>
+        <StepBtnStyle onClick={onFormSubmit}>Submit</StepBtnStyle>
       )}
     </StepBtnContainer>
   );

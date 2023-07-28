@@ -2,21 +2,24 @@ import { styled } from "styled-components";
 import { ResponseGroup } from "./ShortResponse";
 import { RadioLabel } from "./RadioResponse";
 
-
-export function CheckboxResponse({ className, data }) {
-  const inputCheckboxItem = data.map((item) => {
-    return (
-      <div key={item.id}>
-        <input type="checkbox" />
-        <CheckboxLabel>
-          {item.name} <a herf="">{item.link}</a>
+export function CheckboxResponse({ id, name, link, isChecked, onChange }) {
+  return (
+    <ResponseGroup margin="0">
+      <div key={id}>
+        <input
+          type="checkbox"
+          id={id}
+          checked={isChecked}
+          onChange={onChange}
+        />
+        <CheckboxLabel htmlFor={id}>
+          {name} <a herf="">{link}</a>
         </CheckboxLabel>
       </div>
-    );
-  });
-  return <ResponseGroup margin="0">{inputCheckboxItem}</ResponseGroup>;
+    </ResponseGroup>
+  );
 }
 
 const CheckboxLabel = styled(RadioLabel)`
   margin-left: 0.5em;
-`
+`;
