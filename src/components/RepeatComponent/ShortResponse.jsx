@@ -1,14 +1,25 @@
 import { styled } from "styled-components";
 import { colorList } from "../../styles/ColorSettings";
 
-export function ShortResponse({ name, type, placeholder, pattern, isRequired, margin, inputValue, onChange }) {
+export function ShortResponse({
+  title,
+  name,
+  type,
+  placeholder,
+  pattern,
+  isRequired,
+  margin,
+  inputValue,
+  onChange,
+}) {
   return (
     <ResponseGroup margin={margin}>
-       <FormLabel>
-        {name} {isRequired === "true" ? <span>*</span> : ""}
+      <FormLabel>
+        {title} {isRequired === "true" ? <span>*</span> : ""}
       </FormLabel>
       <FormInput
-        type={type}
+        type={type || "text"}
+        name={name}
         placeholder={placeholder}
         pattern={pattern || ""}
         required={isRequired}
@@ -19,18 +30,17 @@ export function ShortResponse({ name, type, placeholder, pattern, isRequired, ma
   );
 }
 
-
 export const ResponseGroup = styled.div`
-  margin-bottom: ${props => props.margin || "0.75em"}
-`
+  margin-bottom: ${(props) => props.margin || "0.75em"};
+`;
 
 export const FormLabel = styled.div`
   font-size: 1rem;
   font-weight: 700;
-  span{
+  span {
     color: ${colorList.error};
   }
-`
+`;
 export const FormInput = styled.input`
   width: 100%;
   height: 2rem;

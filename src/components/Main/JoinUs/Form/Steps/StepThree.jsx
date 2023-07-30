@@ -7,19 +7,10 @@ import {
   FormLabel,
 } from "../../../../RepeatComponent/ShortResponse";
 
-export default function StepThree({ formData, setFormData }) {
-  const handleFileChange = (event) => {
-    setFormData({
-      ...formData,
-      file: event.target.files[0],
-    });
-  }
-  const handleOtherFileChange = (event) => {
-    setFormData({
-      ...formData,
-      otherFile: event.target.files[0],
-    });
-  };
+import useFormContext from "../../../../../hooks/useFormContext";
+
+export default function StepThree() {
+  const { formData, handleFormChange } = useFormContext();
   return (
     <form>
       <StepSubTitle>
@@ -30,35 +21,35 @@ export default function StepThree({ formData, setFormData }) {
         <FileResponse
           forId="resume"
           title={
-            formData.file === "" ? "Click to choose a file" : formData.file.name
+            formData.resume === ""
+              ? "Click to choose a file"
+              : formData.resume.name
           }
           title1="Resume / CV"
           isRequired="true"
-          onChange={handleFileChange}
+          onChange={handleFormChange}
         />
         <FileResponse
-          forId="other-doc"
+          forId="otherDoc"
           title={
-            formData.otherFile === ""
+            formData.otherDoc === ""
               ? "Click to choose a file"
-              : formData.otherFile.name
+              : formData.otherDoc.name
           }
           title1="Other Documents"
           title2="(Portfolio, Recommendation letter, etc.)"
           isRequired="false"
-          onChange={handleOtherFileChange}
+          onChange={handleFormChange}
         />
         <ResponseGroup>
           <FormLabel>Questions / Comments</FormLabel>
           <TextAreaInput
-            id="questions"
-            name="questions"
+            id="comment"
+            name="comment"
             rows="4"
             placeholder="Write your questions or comments here..."
             value={formData.comment}
-            onChange={(event) =>
-              setFormData({ ...formData, comment: event.target.value })
-            }
+            onChange={handleFormChange}
           />
         </ResponseGroup>
       </StepSection>

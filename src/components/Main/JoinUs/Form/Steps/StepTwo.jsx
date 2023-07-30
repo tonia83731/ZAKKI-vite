@@ -11,6 +11,8 @@ import {
   FormLabel,
 } from "../../../../RepeatComponent/ShortResponse";
 
+import useFormContext from "../../../../../hooks/useFormContext";
+
 const locationData = [
   {
     id: "offline",
@@ -43,8 +45,8 @@ const timeData = [
   },
 ];
 
-export default function StepTwo({ jobValue, formData, setFormData }) {
-  
+export default function StepTwo({ jobValue }) {
+  const { formData, handleFormChange } = useFormContext();
 
   return (
     <form>
@@ -63,39 +65,33 @@ export default function StepTwo({ jobValue, formData, setFormData }) {
         </ResponseGroup>
         <RadioResponse
           className="location-radio"
-          name="Online / Offline"
+          title="Available Location"
+          name="availableLocation"
           data={locationData}
           isRequired="true"
-          inputValue={formData.location}
-          onChange={(e) => {
-            setFormData({ ...formData, location: e.target.value });
-          }}
+          inputValue={formData.availableLocation}
+          onChange={handleFormChange}
         />
         <RadioResponse
           className="time-radio"
-          name="Available Time Hour"
+          title="Available Time"
+          name="availableTime"
           data={timeData}
           isRequired="true"
-          inputValue={formData.time}
-          onChange={(e) => {
-            setFormData({ ...formData, time: e.target.value });
-          }}
+          inputValue={formData.availableTime}
+          onChange={handleFormChange}
         />
         <ShortResponse
-          name="Time Zone"
+          title="Time Zone"
+          name="timeZone"
           type="text"
           placeholder="PST"
           isRequired="true"
-          inputValue={formData.timeZone}
-          onChange={(event) =>
-            setFormData({
-              ...formData,
-              timeZone: event.target.value.toUpperCase(),
-            })
-          }
+          inputValue={formData.timeZone.toUpperCase()}
+          onChange={handleFormChange}
         />
         <JobCaption>
-          Check your time zone{" "}
+          Look up your time zone{" "}
           <a href="https://www.ge.com/digital/documentation/meridium/V36160/Help/Master/Subsystems/AssetPortal/Content/Time_Zone_Mappings.htm">
             here
           </a>

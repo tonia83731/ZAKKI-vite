@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import { breakpoints } from "../../styles/Breakpoints";
 import { ResponseGroup, FormLabel } from "./ShortResponse";
 
-export function RadioResponse({ name, data, isRequired, inputValue, onChange }) {
+export function RadioResponse({ name, title, data, isRequired, inputValue, onChange }) {
   const inputRadioItem = data.map((item, index) => {
     return (
       <RadioWrapper key={item.id}>
@@ -22,7 +22,7 @@ export function RadioResponse({ name, data, isRequired, inputValue, onChange }) 
   return (
     <ResponseGroup>
       <FormLabel>
-        {name} {isRequired === "true" ? <span>*</span> : ""}
+        {title} {isRequired === "true" ? <span>*</span> : ""}
       </FormLabel>
       <RadioGroup>{inputRadioItem}</RadioGroup>
     </ResponseGroup>

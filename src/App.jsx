@@ -15,22 +15,26 @@ import TeamPage from "./pages/TeamPage";
 import OneEventPage from "./pages/OneEventPage";
 import OneProgramPage from "./pages/OneProgramPage";
 
+import { FormProvider } from "./context/FormContext";
+
 function App() {
   return (
     <div id="app">
       <Header />
-      <BrowserRouter>
-        <Routes>
-          <Route index element={<HomePage />} />
-          <Route path="stories" element={<StoriesPage />} />
-          <Route path="programs" element={<ProgramPage />} />
-          <Route path="programs/:id" element={<OneProgramPage />} />
-          <Route path="events" element={<EventPage />}/>
-          <Route path="events/:id" element={<OneEventPage />} />
-          <Route path="joinus" element={<JoinUs />} />
-          <Route path="team" element={<TeamPage />} />
-        </Routes>
-      </BrowserRouter>
+      <FormProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<HomePage />} />
+            <Route path="stories" element={<StoriesPage />} />
+            <Route path="programs" element={<ProgramPage />} />
+            <Route path="programs/:id" element={<OneProgramPage />} />
+            <Route path="events" element={<EventPage />} />
+            <Route path="events/:id" element={<OneEventPage />} />
+            <Route path="joinus" element={<JoinUs />} />
+            <Route path="team" element={<TeamPage />} />
+          </Routes>
+        </BrowserRouter>
+      </FormProvider>
       <Footer />
     </div>
   );

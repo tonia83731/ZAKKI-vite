@@ -4,6 +4,8 @@ import Steps from "../components/Main/JoinUs/Form/Steps/Steps";
 import JobOptions from "../components/Main/JoinUs/Form/JobOptions";
 import JobModal from "../components/Main/JoinUs/JobModal";
 
+import useFormContext from "../hooks/useFormContext";
+
 import { styled } from "styled-components";
 import { breakpoints } from "../styles/Breakpoints";
 import { MainContainer, PageContainer } from "../styles/Container";
@@ -14,51 +16,56 @@ import Swal from "sweetalert2";
 
 import { useState } from "react";
 
-const steps = [
-  {
-    label: "BasicInfo.",
-    step: 1,
-  },
-  {
-    label: "Document",
-    step: 2,
-  },
-  {
-    label: "Summary",
-    step: 3,
-  },
-];
-
 export default function JoinUsPage() {
-  const [currentPage, setCurrentPage] = useState(1);
+  const { currentPage, setCurrentPage, formData, title, canSubmit } =
+    useFormContext();
+
+  
+
+  // const [currentPage, setCurrentPage] = useState(1);
   const [modalContent, setModalContent] = useState([]);
   const [modalToggle, setModalToggle] = useState(false);
 
-  const [isGetNewsChecked, setIsGetNewsChecked] = useState(false);
-  const [isPolicyChecked, setIsPolicyChecked] = useState(false);
+  // const [isGetNewsChecked, setIsGetNewsChecked] = useState(false);
+  // const [isPolicyChecked, setIsPolicyChecked] = useState(false);
 
   const [jobValue, setJobValue] = useState("");
-  const [formData, setFormData] = useState({
-    name: "",
-    age: 18,
-    phone: "",
-    email: "",
-    getNews: isGetNewsChecked,
-    policy: isPolicyChecked,
-    location: "offline",
-    time: "anytime",
-    timeZone: "",
-    file: "",
-    otherFile: "",
-    comment: "",
-  });
-  const [errors, setErrors] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    timeZone: "",
-    file: "",
-  });
+
+  const steps = [
+    {
+      label: "BasicInfo.",
+      step: 1,
+    },
+    {
+      label: "JobInfo.",
+      step: 2,
+    },
+    {
+      label: "File/Comments",
+      step: 3,
+    },
+  ];
+  // const [formData, setFormData] = useState({
+  //   name: "",
+  //   age: 18,
+  //   phone: "",
+  //   email: "",
+  //   getNews: isGetNewsChecked,
+  //   policy: isPolicyChecked,
+  //   location: "offline",
+  //   time: "anytime",
+  //   timeZone: "",
+  //   file: "",
+  //   otherFile: "",
+  //   comment: "",
+  // });
+  // const [errors, setErrors] = useState({
+  //   name: "",
+  //   phone: "",
+  //   email: "",
+  //   timeZone: "",
+  //   file: "",
+  // });
 
   const handleInfoClick = (id) => {
     const jobModal = dummyJobData.filter((prop) => prop.id === id);
@@ -68,42 +75,50 @@ export default function JoinUsPage() {
   const handleModalClose = () => {
     setModalToggle(false);
   };
-  const handleNextClick = () => {
-    setCurrentPage(currentPage + 1);
-  };
-  const handlePrevClick = () => {
-    setCurrentPage(currentPage - 1);
-  };
+
   const handleJobOptionsChange = (e) => {
     setJobValue(e.target.value);
   };
-  const handleGetNewsChange = () => {
-    setIsGetNewsChecked(!isGetNewsChecked);
-    setFormData({
-      ...formData, getNews: isGetNewsChecked
-    })
-  };
-  const handlePolicyChange = () => {
-    setIsPolicyChecked(!isPolicyChecked);
-    setFormData({
-      ...formData,
-      policy: isPolicyChecked,
-    });
-  };
+  // const handleGetNewsChange = () => {
+  //   setIsGetNewsChecked(!isGetNewsChecked);
+  //   setFormData({
+  //     ...formData,
+  //     getNews: isGetNewsChecked,
+  //   });
+  // };
+  // const handlePolicyChange = () => {
+  //   setIsPolicyChecked(!isPolicyChecked);
+  //   setFormData({
+  //     ...formData,
+  //     policy: isPolicyChecked,
+  //   });
+  // };
 
+  // handle previous button
+  const handlePrevClick = () => {
+    setCurrentPage((prev) => prev - 1);
+  };
+  // handle next button
+  const handleNextClick = () => {
+    setCurrentPage((prev) => prev + 1);
+  };
+  /* sumit form at the final page */
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
 
-  const handleFormSubmit = () => {
     Swal.fire({
       icon: "success",
       title: "Your application has been submitted",
       showConfirmButton: false,
       timer: 1500,
     });
-    setCurrentPage(1)
-  }
+    setCurrentPage(0);
+  };
+  /* submit form at the final page */
 
   const totalPage = steps.length;
   const width = `${(100 / (totalPage - 1)) * (currentPage - 1)}%`;
+
   return (
     <main>
       <MainContainer>
@@ -114,25 +129,21 @@ export default function JoinUsPage() {
               onJobOptionsChange={handleJobOptionsChange}
             />
             <FormContainer>
-                <ApplyProgress
-                  props={steps}
-                  width={width}
-                  activeStep={currentPage}
-                />
-                <Steps
-                  activeStep={currentPage}
-                  jobValue={jobValue}
-                  formData={formData}
-                  setFormData={setFormData}
-                  onGetNewsChange={handleGetNewsChange}
-                  onPolicyChange={handlePolicyChange}
-                />
-                <ApplyProgressControl
-                  onPreClick={handlePrevClick}
-                  onNextClick={handleNextClick}
-                  onFormSubmit={handleFormSubmit}
-                  activeStep={currentPage}
-                />
+              <ApplyProgress
+                props={steps}
+                width={width}
+                activeStep={currentPage}
+              />
+              <Steps
+                jobValue={jobValue}
+              />
+              <ApplyProgressControl
+                onPreClick={handlePrevClick}
+                onNextClick={handleNextClick}
+                onFormSubmit={handleFormSubmit}
+                activeStep={currentPage}
+                disabled={!canSubmit}
+              />
             </FormContainer>
           </JoinUsContainer>
         </section>
