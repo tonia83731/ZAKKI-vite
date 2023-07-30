@@ -66,28 +66,28 @@ export default function StepTwo({ jobValue }) {
         <RadioResponse
           className="location-radio"
           title="Available Location"
-          name="availableLocation"
+          name="jobAvailableLocation"
           data={locationData}
           isRequired="true"
-          inputValue={formData.availableLocation}
+          inputValue={formData.jobAvailableLocation}
           onChange={handleFormChange}
         />
         <RadioResponse
           className="time-radio"
           title="Available Time"
-          name="availableTime"
+          name="jobAvailableTime"
           data={timeData}
           isRequired="true"
-          inputValue={formData.availableTime}
+          inputValue={formData.jobAvailableTime}
           onChange={handleFormChange}
         />
         <ShortResponse
           title="Time Zone"
-          name="timeZone"
+          name="jobTimeZone"
           type="text"
           placeholder="PST"
           isRequired="true"
-          inputValue={formData.timeZone.toUpperCase()}
+          inputValue={formData.jobTimeZone.toUpperCase()}
           onChange={handleFormChange}
         />
         <JobCaption>

@@ -23,62 +23,62 @@ export default function StepOne() {
         <NameSection>
           <ShortResponse
             title="First Name"
-            name="firstName"
+            name="basicFirstName"
             placeholder="Beatrix C."
             isRequired="true"
-            inputValue={formData.firstName}
+            inputValue={formData.basicFirstName}
             onChange={handleFormChange}
           />
           <ShortResponse
             title="Last Name"
-            name="lastName"
+            name="basicLastName"
             placeholder="Beatrix C."
             isRequired="true"
-            inputValue={formData.lastName}
+            inputValue={formData.basicLastName}
             onChange={handleFormChange}
           />
         </NameSection>
         <ShortResponse
           title="Age"
-          name="age"
+          name="basicAge"
           type="number"
           placeholder="20"
-          inputValue={formData.age}
+          inputValue={formData.basicAge}
           onChange={handleFormChange}
         />
         <ShortResponse
           title="Phone Number"
-          name="phoneNum"
+          name="basicPhoneNum"
           type="tel"
           pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
           placeholder="+62 08525678889"
           isRequired="true"
-          inputValue={formData.phoneNum}
+          inputValue={formData.basicPhoneNum}
           onChange={handleFormChange}
         />
         <ShortResponse
           title="Email"
-          name="email"
+          name="basicEmail"
           type="email"
           placeholder="ecendana@gmail.com"
           isRequired="true"
-          inputValue={formData.email}
+          inputValue={formData.basicEmail}
           onChange={handleFormChange}
         />
         <CheckboxResponse
           id="get-news"
           title="Get update news from ZAKKI every 2 months"
-          name="getNews"
-          isChecked={formData.getNews}
+          name="basicGetNews"
+          isChecked={formData.basicGetNews}
           onChange={handleFormChange}
           isRequired="false"
         />
         <CheckboxResponse
           id="policy"
           title="I agree to follow ZAKKI’s"
-          name="policy"
+          name="basicPolicy"
           link="privacy policy"
-          isChecked={formData.policy}
+          isChecked={formData.basicPolicy}
           onChange={handleFormChange}
           isRequired="true"
         />

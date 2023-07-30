@@ -18,7 +18,8 @@ export default function ApplyProgressControl({
   onNextClick,
   onFormSubmit,
   activeStep,
-  disabled
+  disabled,
+  nextDisabled,
 }) {
   return (
     <StepBtnContainer>
@@ -26,9 +27,13 @@ export default function ApplyProgressControl({
         Previous
       </StepBtnStyle>
       {activeStep !== 3 ? (
-        <StepBtnStyle onClick={onNextClick}>Next</StepBtnStyle>
+        <StepBtnStyle onClick={onNextClick} disabled={nextDisabled}>
+          Next
+        </StepBtnStyle>
       ) : (
-        <StepBtnStyle onClick={onFormSubmit} disabled={disabled}>Submit</StepBtnStyle>
+        <StepBtnStyle onClick={onFormSubmit} disabled={disabled}>
+          Submit
+        </StepBtnStyle>
       )}
     </StepBtnContainer>
   );

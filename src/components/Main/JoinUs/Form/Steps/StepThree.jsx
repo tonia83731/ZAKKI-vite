@@ -19,22 +19,22 @@ export default function StepThree() {
       </StepSubTitle>
       <StepSection>
         <FileResponse
-          forId="resume"
+          forId="fileResume"
           title={
-            formData.resume === ""
+            formData.fileResume === ""
               ? "Click to choose a file"
-              : formData.resume.name
+              : formData.fileResume.name
           }
           title1="Resume / CV"
           isRequired="true"
           onChange={handleFormChange}
         />
         <FileResponse
-          forId="otherDoc"
+          forId="fileOtherDoc"
           title={
-            formData.otherDoc === ""
+            formData.fileOtherDoc === ""
               ? "Click to choose a file"
-              : formData.otherDoc.name
+              : formData.fileOtherDoc.name
           }
           title1="Other Documents"
           title2="(Portfolio, Recommendation letter, etc.)"
@@ -45,10 +45,10 @@ export default function StepThree() {
           <FormLabel>Questions / Comments</FormLabel>
           <TextAreaInput
             id="comment"
-            name="comment"
+            name="fileComment"
             rows="4"
             placeholder="Write your questions or comments here..."
-            value={formData.comment}
+            value={formData.fileComment}
             onChange={handleFormChange}
           />
         </ResponseGroup>

@@ -17,11 +17,18 @@ import Swal from "sweetalert2";
 import { useState } from "react";
 
 export default function JoinUsPage() {
-  const { currentPage, setCurrentPage, formData, title, canSubmit } =
-    useFormContext();
+  const {
+    currentPage,
+    setCurrentPage,
+    formData,
+    setFormData,
+    canSubmit,
+    disableNext,
+    handleJobOptionsChange
+  } = useFormContext();
 
   
-
+  // const [jobValue, setJobValue] = useState("");
   // const [currentPage, setCurrentPage] = useState(1);
   const [modalContent, setModalContent] = useState([]);
   const [modalToggle, setModalToggle] = useState(false);
@@ -29,7 +36,7 @@ export default function JoinUsPage() {
   // const [isGetNewsChecked, setIsGetNewsChecked] = useState(false);
   // const [isPolicyChecked, setIsPolicyChecked] = useState(false);
 
-  const [jobValue, setJobValue] = useState("");
+  
 
   const steps = [
     {
@@ -76,9 +83,9 @@ export default function JoinUsPage() {
     setModalToggle(false);
   };
 
-  const handleJobOptionsChange = (e) => {
-    setJobValue(e.target.value);
-  };
+  // const handleJobOptionsChange = (e) => {
+  //   setJobValue(e.target.value);
+  // };
   // const handleGetNewsChange = () => {
   //   setIsGetNewsChecked(!isGetNewsChecked);
   //   setFormData({
@@ -112,7 +119,23 @@ export default function JoinUsPage() {
       showConfirmButton: false,
       timer: 1500,
     });
-    setCurrentPage(0);
+    setCurrentPage(1);
+    setFormData({
+      basicFirstName: "",
+      basicLastName: "",
+      basicAge: 18,
+      basicPhoneNum: "",
+      basicEmail: "",
+      basicGetNews: false,
+      basicPolicy: false,
+      jobTitleValue:"",
+      jobAvailableLocation: "offline",
+      jobAvailableTime: "anytime",
+      jobTimeZone: "",
+      fileResume: "",
+      fileOtherDoc: "",
+      fileComment: "",
+    });
   };
   /* submit form at the final page */
 
@@ -134,15 +157,14 @@ export default function JoinUsPage() {
                 width={width}
                 activeStep={currentPage}
               />
-              <Steps
-                jobValue={jobValue}
-              />
+              <Steps jobValue={formData.jobTitleValue} />
               <ApplyProgressControl
                 onPreClick={handlePrevClick}
                 onNextClick={handleNextClick}
                 onFormSubmit={handleFormSubmit}
                 activeStep={currentPage}
                 disabled={!canSubmit}
+                nextDisabled={disableNext}
               />
             </FormContainer>
           </JoinUsContainer>
