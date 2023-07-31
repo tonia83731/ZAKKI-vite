@@ -58,7 +58,7 @@ export default function JobOptions({ onInfoClick, onJobOptionsChange }) {
 const JobOptionsContainer = styled.div`
   white-space: nowrap;
   width: 95%;
-  margin: 0 auto;
+  margin: 1em auto 0;
   overflow-x: scroll;
   @media screen and (min-width: ${breakpoints.desktop}) {
     width: 100%;

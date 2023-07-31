@@ -38,16 +38,31 @@ This project is available on mobile, tablet and desktop.
 
 ## Demo Page Link
 
+https://tonia83731.github.io/ZAKKI-vite/
 
 
 ## Demo Feature (Mobile)
-(Number description same as Demo Feature (Desktop))
+0. Mobile navbar click hamburger to open
+(Other number description same as Demo Feature (Desktop))
 
-<!-- ![Alt text](src/MarkDown/Taipei_parking_mobile-02.png) -->
+![Alt text](src/assets/Img/Readme/Readme_mobile.png)
 
 ## Demo Feature (Desktop)
 
-<!-- ![Alt text](src/MarkDown/Taipei_parking_desktop.png) -->
+1. HomePage
+  * #HomeCarousel: HomeCarousel could swith through the dot bottom below
+  * #AboutUs: with the video (now is a fake one)
+2. StoryPage: Linked through Homecarousel, include volunteer story and beneficiary story
+3. ProgramPage: Can search or filter
+4. OneProgramPage: Linked through ProgramPage, could view program information, related event and guid button
+5. DonateModal: When click the donate card in OneProgramPage will open the donate process, the "To payment" button currently link to Paypal homepage
+6. TeamPage: Linked through OneProgramPage
+7. EventPage: Include Recommend Event and other Event List, could also filter and search
+8. OneEventPge: Linked from EventPage, event detail and book and event(not design currently)
+9. JoinUsPage: For user who want to become a volunteer to fill in their information
+10. JobOptionModal: Will popup when click "more info." will show the job requirements in list
+
+![Alt text](src/assets/Img/Readme/Readme_desktop.png)
 
 ## Develp Environment and Tools
 
@@ -90,4 +105,5 @@ This is for future development, will not include in current project
 
 * User can see website in different language
 * User can login/signup for ZAKKI's member
+* User can use booking form in OneEventPage(Book the event button)
 
