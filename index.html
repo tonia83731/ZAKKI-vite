@@ -5,7 +5,21 @@
     <link rel="icon" type="image/svg+xml" href="/ZAKKI-vite/assets/favicon-01-85ebd029.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ZAKKI</title>
-    <script type="module" crossorigin src="/ZAKKI-vite/assets/index-d2038b3f.js"></script>
+    <script type="text/javascript">
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      })(window.location);
+    </script>
+    <script type="module" crossorigin src="/ZAKKI-vite/assets/index-9fb3eb01.js"></script>
     <link rel="stylesheet" href="/ZAKKI-vite/assets/index-2c2db021.css">
   </head>
   <body>
