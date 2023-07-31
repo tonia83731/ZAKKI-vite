@@ -21,7 +21,6 @@ export function ShortResponse({
         type={type || "text"}
         name={name}
         placeholder={placeholder}
-        pattern={pattern || ""}
         required={isRequired}
         value={inputValue}
         onChange={onChange}

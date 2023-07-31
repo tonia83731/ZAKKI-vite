@@ -4,7 +4,7 @@ const mainPageData = [
   {
     id: 1,
     title: "Donate to us",
-    link: "/ZAKKI-vite/",
+    link: "/ZAKKI-vite/events",
   },
   {
     id: 2,

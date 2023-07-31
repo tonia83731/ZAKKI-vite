@@ -73,6 +73,7 @@ export default function DonateModal({prop, onModalClose, onDonateSubmit, nameVal
             <DonateModalForm onSubmit={onDonateSubmit}>
               <div>
                 <ShortResponse
+                  title="Full Name"
                   name="Full Name"
                   type="text"
                   placeholder="Please enter your name..."
@@ -81,6 +82,7 @@ export default function DonateModal({prop, onModalClose, onDonateSubmit, nameVal
                   onChange={onNameChange}
                 />
                 <ShortResponse
+                  title="Email"
                   name="Email"
                   type="email"
                   placeholder="Please enter your email..."
