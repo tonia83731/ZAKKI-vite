@@ -64,9 +64,9 @@ export default function OneProgramPage() {
             <div>
               <Guide
                 first="Programs"
-                firstLink="/programs"
+                firstLink="/ZAKKI-vite/programs"
                 second={prop.title}
-                secondLink={`/propgrams/${prop.id}`}
+                secondLink={`/ZAKKI-vite/propgrams/${prop.id}`}
               />
               <div>
                 <ProgramTitle>{prop.title}</ProgramTitle>
@@ -82,15 +82,15 @@ export default function OneProgramPage() {
               />
               <UpcommingEventDiv>
                 <ProgramEventCard props={allEvent} />
-                <Link to="/events">
+                <Link to="/ZAKKI-vite/events">
                   <MoreEventLink>More Events</MoreEventLink>
                 </Link>
               </UpcommingEventDiv>
               <OneProgramBtnGroup>
-                <Link to="/team">
+                <Link to="/ZAKKI-vite/team">
                   <BorderBtn>Project Team Member &#8250;</BorderBtn>
                 </Link>
-                <Link to="/joinus">
+                <Link to="/ZAKKI-vite/joinus">
                   <BorderBtn>Become Volunteer &#8250;</BorderBtn>
                 </Link>
                 <Link to="#">

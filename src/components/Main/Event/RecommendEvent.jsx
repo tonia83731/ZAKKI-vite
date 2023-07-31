@@ -74,7 +74,7 @@ export default function RecommendEvent({props}) {
     <EventCardGroup>
       {props.map((item) => {
         return (
-          <Link to={`/events/${item.id}`}>
+          <Link to={`/ZAKKI-vite/events/${item.id}`}>
             <EventCard background={item.img} key={item.id}>
               <EventCardBody>
                 <SubTitle2 className="title">{item.title}</SubTitle2>

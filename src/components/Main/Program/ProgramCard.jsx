@@ -12,7 +12,7 @@ import { breakpoints } from "../../../styles/Breakpoints";
 export default function ProgramCard({props}) {
   return props.map((item) => {
     return (
-      <Link to={`/programs/${item.id}`} key={item.id}>
+      <Link to={`/ZAKKI-vite/programs/${item.id}`} key={item.id}>
         <CardDiv background={item.img} key={item.id}>
           <CardBody>
             <SubTitle2 className="title">{item.title}</SubTitle2>

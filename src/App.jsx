@@ -24,14 +24,17 @@ function App() {
       <FormProvider>
         <BrowserRouter>
           <Routes>
-            <Route index element={<HomePage />} />
-            <Route path="stories" element={<StoriesPage />} />
-            <Route path="programs" element={<ProgramPage />} />
-            <Route path="programs/:id" element={<OneProgramPage />} />
-            <Route path="events" element={<EventPage />} />
-            <Route path="events/:id" element={<OneEventPage />} />
-            <Route path="joinus" element={<JoinUs />} />
-            <Route path="team" element={<TeamPage />} />
+            <Route path="/ZAKKI-vite/" element={<HomePage />} />
+            <Route path="/ZAKKI-vite/stories" element={<StoriesPage />} />
+            <Route path="/ZAKKI-vite/programs" element={<ProgramPage />} />
+            <Route
+              path="/ZAKKI-vite/programs/:id"
+              element={<OneProgramPage />}
+            />
+            <Route path="/ZAKKI-vite/events" element={<EventPage />} />
+            <Route path="/ZAKKI-vite/events/:id" element={<OneEventPage />} />
+            <Route path="/ZAKKI-vite/joinus" element={<JoinUs />} />
+            <Route path="/ZAKKI-vite/team" element={<TeamPage />} />
           </Routes>
         </BrowserRouter>
       </FormProvider>

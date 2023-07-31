@@ -33,7 +33,7 @@ export default function ProgramEventCard({props}) {
         return (
           <UpcommingEventCard background={item.img} key={item.id}>
             <EventCardBody>
-              <Link to={`/events/${item.id}`}>
+              <Link to={`/ZAKKI-vite/events/${item.id}`}>
                 <SubTitle2>{item.title}</SubTitle2>
               </Link>
               <EventCardParagraph>

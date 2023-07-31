@@ -13,22 +13,22 @@ const headerData = [
   {
     id: 1,
     name: "Home",
-    link: "/",
+    link: "/ZAKKI-vite/",
   },
   {
     id: 2,
     name: "Programs",
-    link: "/programs",
+    link: "/ZAKKI-vite/programs",
   },
   {
     id: 3,
     name: "Events",
-    link: "/events",
+    link: "/ZAKKI-vite/events",
   },
   {
     id: 4,
     name: "Join Us",
-    link: "/joinus",
+    link: "/ZAKKI-vite/joinus",
   },
 ];
 

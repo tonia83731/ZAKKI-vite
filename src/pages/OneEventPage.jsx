@@ -34,7 +34,12 @@ export default function OneEventPage() {
         return (
           <OneProgramSection id="one-event">
             <div>
-              <Guide first="Event" firstLink="/events" second={prop.title} secondLink={`/events/${prop.id}`} />
+              <Guide
+                first="Event"
+                firstLink="/ZAKKI-vite/events"
+                second={prop.title}
+                secondLink={`/ZAKKI-vite/events/${prop.id}`}
+              />
               <div>
                 <ProgramTitle>{prop.title}</ProgramTitle>
                 <OneProgramImg src={prop.img} alt="" />

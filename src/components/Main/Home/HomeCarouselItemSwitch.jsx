@@ -4,12 +4,12 @@ const mainPageData = [
   {
     id: 1,
     title: "Donate to us",
-    link: "",
+    link: "/ZAKKI-vite/",
   },
   {
     id: 2,
     title: "Become a Volunteer",
-    link: "/joinus",
+    link: "/ZAKKI-vite/joinus",
   },
 ];
 
@@ -17,7 +17,7 @@ const programPageData = [
   {
     id: 1,
     title: "View ZAKKI's Program",
-    link: "/programs",
+    link: "/ZAKKI-vite/programs",
   },
 ];
 
@@ -25,7 +25,7 @@ const storiesPageData = [
   {
     id: 1,
     title: "View Member Stories",
-    link: "/stories",
+    link: "/ZAKKI-vite/stories",
   },
 ];
 

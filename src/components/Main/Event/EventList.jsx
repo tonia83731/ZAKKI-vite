@@ -17,7 +17,7 @@ export default function EventList({props}){
         {props.map((event) => {
           return (
             <EventItem>
-              <Link to={`/events/${event.id}`}>
+              <Link to={`/ZAKKI-vite/events/${event.id}`}>
                 <SubTitle2 margin="0 0 0.8em">{event.title}</SubTitle2>
                 <EventCardParagraph>
                   <FlexCenter>
