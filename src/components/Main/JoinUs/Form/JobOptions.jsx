@@ -88,6 +88,8 @@ const JobCardLabel = styled.label`
   @media screen and (min-width: ${breakpoints.desktop}) {
     display: block;
     max-width: unset;
+    margin-right: 0;
+    margin-left: 0.5em;
   }
 `;
 const JobCheckbox = styled.input`
