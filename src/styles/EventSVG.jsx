@@ -5,7 +5,7 @@ import { ReactComponent as EventLocationIcon } from "../assets/Img/event/event_l
 import { ReactComponent as EventBell } from "../assets/Img/event/event_bell.svg";
 
 export const EventLocationSVG = styled(EventLocationIcon)`
-  width: 0.8rem;
+  width: 14px;
   height: auto;
   path {
     fill: rgb(10, 62, 25, 0.8);
@@ -13,7 +13,7 @@ export const EventLocationSVG = styled(EventLocationIcon)`
 `;
 
 export const EventTimeSVG = styled(EventTimeIcon)`
-  width: 0.8rem;
+  width: 16px;
   height: auto;
   path {
     fill: rgb(10, 62, 25, 0.8);

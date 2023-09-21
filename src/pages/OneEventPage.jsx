@@ -10,6 +10,7 @@ import {
   OneProgramParagraph,
 } from "./OneProgramPage";
 import { GreenBgBtn } from "../components/Main/OneProgram/DonateCard";
+import { SpaceDiv } from "../components/Main/Event/RecommendEvent";
 
 import { Guide } from "../components/Main/OneProgram/Guide";
 
@@ -60,6 +61,7 @@ export default function OneEventPage() {
                     <GreenBgBtn>Book the Event &#8250;</GreenBgBtn>
                   </BtnMode>
                 </OneEventInfo>
+                <SpaceDiv></SpaceDiv>
                 <div>
                   <SubTitle2>Description</SubTitle2>
                   <OneProgramParagraph>
@@ -134,8 +136,9 @@ const OneEventInfo = styled.div`
 const OneEventItem = styled.div`
   font-size: 0.9em;
   color: ${colorList.green_focus_80};
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 20px auto;
+  align-items: start;
   svg {
     width: 1em;
     height: auto;

@@ -153,6 +153,7 @@ const NavToggle = styled.input`
   }
 `;
 const NavToggleLabel = styled.label`
+  cursor: pointer;
   grid-column: 2/3;
   @media screen and (min-width: ${breakpoints.tablet}) {
     display: none;

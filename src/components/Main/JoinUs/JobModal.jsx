@@ -58,7 +58,7 @@ export const JobModalSection = styled.section`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90%;
-  padding: 1em 2em;
+  padding: 1em;
   background-color: ${colorList.white};
   color: ${colorList.green_focus};
   border-radius: 10px;
@@ -82,6 +82,7 @@ const JobModalHr = styled.hr`
 
 const JobModalInfo = styled.div`
   margin-top: 1em;
+  padding: 0 1em;
 `;
 const JobModalList = styled.ul`
   margin-top: 0.5em;

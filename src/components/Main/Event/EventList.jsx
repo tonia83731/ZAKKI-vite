@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 import { colorList } from "../../../styles/ColorSettings";
 import { SubTitle2 } from "../../../styles/Title";
-import { FlexCenter, EventCardParagraph, CardItemParagraph } from "./RecommendEvent";
+import { FlexCenter, EventCardParagraph, CardItemParagraph, EventInfoAdjust, SpaceDiv } from "./RecommendEvent";
 import { EventTimeSVG, EventLocationSVG } from "../../../styles/EventSVG";
 
 import { dummyEventData } from '../../../Data/EventData';
@@ -20,16 +20,17 @@ export default function EventList({props}){
               <Link to={`/ZAKKI-vite/events/${event.id}`}>
                 <SubTitle2 margin="0 0 0.8em">{event.title}</SubTitle2>
                 <EventCardParagraph>
-                  <FlexCenter>
+                  <EventInfoAdjust>
                     <EventLocationSVG />
                     <CardItemParagraph>
                       Location: {event.location}
                     </CardItemParagraph>
-                  </FlexCenter>
-                  <FlexCenter>
+                  </EventInfoAdjust>
+                  <SpaceDiv></SpaceDiv>
+                  <EventInfoAdjust>
                     <EventTimeSVG />
                     <CardItemParagraph>Date: {event.date}</CardItemParagraph>
-                  </FlexCenter>
+                  </EventInfoAdjust>
                 </EventCardParagraph>
               </Link>
             </EventItem>

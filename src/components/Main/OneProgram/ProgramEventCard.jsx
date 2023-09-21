@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import { breakpoints } from "../../../styles/Breakpoints";
 import { colorList } from "../../../styles/ColorSettings";
 import { SubTitle2 } from "../../../styles/Title";
-import { FlexCenter } from "../Event/RecommendEvent";
+import { EventInfoAdjust, SpaceDiv } from "../Event/RecommendEvent";
 import { EventCard, EventCardBody, EventCardParagraph } from "../Event/RecommendEvent";
 import { CardItemParagraph } from "../Event/RecommendEvent";
 import { EventLocationSVG, EventTimeSVG } from "../../../styles/EventSVG";
@@ -36,17 +36,19 @@ export default function ProgramEventCard({props}) {
               <Link to={`/ZAKKI-vite/events/${item.id}`}>
                 <SubTitle2>{item.title}</SubTitle2>
               </Link>
+              <SpaceDiv></SpaceDiv>
               <EventCardParagraph>
-                <FlexCenter>
+                <EventInfoAdjust>
                   <EventLocationSVG />
                   <CardItemParagraph>
                     Location: {item.location}
                   </CardItemParagraph>
-                </FlexCenter>
-                <FlexCenter>
+                </EventInfoAdjust>
+                <SpaceDiv></SpaceDiv>
+                <EventInfoAdjust>
                   <EventTimeSVG />
                   <CardItemParagraph>Date: {item.date}</CardItemParagraph>
-                </FlexCenter>
+                </EventInfoAdjust>
               </EventCardParagraph>
             </EventCardBody>
           </UpcommingEventCard>
