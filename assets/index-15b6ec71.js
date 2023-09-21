@@ -638,6 +638,9 @@ https://sweetalert2.github.io/#ajax-request`),m5(o),typeof o.title=="string"&&(o
   &:hover {
     background-color: ${D.white};
   }
+  @media screen and (min-width: 1140px) {
+    min-height: 130px;
+  }
 `,Jl=Q.div`
   font-size: 12px;
   min-height: 50px;
