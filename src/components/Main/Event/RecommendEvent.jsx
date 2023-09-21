@@ -82,6 +82,9 @@ export const EventCardBody = styled.div`
   &:hover {
     background-color: ${colorList.white};
   }
+  @media screen and (min-width: 1140px) {
+    min-height: 130px;
+  }
 `;
 export const EventCardParagraph = styled.div`
   font-size: 12px;
