@@ -7,27 +7,6 @@ import { ReactComponent as ProgramDonateIcon } from "../../../assets/svg/noun-do
 import { ReactComponent as ProgramVolunteerIcon } from "../../../assets/svg/noun-volunteer-3842725.svg";
 import { ReactComponent as ProgramBeneficiaryIcon } from "../../../assets/svg/noun-people-5730407.svg";
 
-const donateData = [
-  {
-    id: 1,
-    name: "Donors",
-    num: "123",
-    icon: <ProgramDonateIcon />,
-  },
-  {
-    id: 1,
-    name: "Volunteers",
-    num: "145",
-    icon: <ProgramVolunteerIcon />,
-  },
-  {
-    id: 1,
-    name: "Beneficieries",
-    num: "023",
-    icon: <ProgramBeneficiaryIcon />,
-  },
-];
-
 export default function DonateCard({ mode, prop, onDonateClick }) {
   const totalPrice = prop.target_donate;
   const numTotal = Number(totalPrice)

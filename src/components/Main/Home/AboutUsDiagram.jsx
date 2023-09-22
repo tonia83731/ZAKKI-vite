@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-import { breakpoints } from "../../../styles/Breakpoints";
 
 import { ReactComponent as ElderlyIcon } from "../../../assets/Img/Home/elderly.svg";
 import { ReactComponent as CommunityIcon } from "../../../assets/Img/Home/community.svg";

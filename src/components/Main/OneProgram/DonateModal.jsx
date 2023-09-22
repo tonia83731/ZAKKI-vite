@@ -1,33 +1,13 @@
 import { styled } from "styled-components";
 import { breakpoints } from "../../../styles/Breakpoints";
 import { colorList } from "../../../styles/ColorSettings";
-import { SubTitle, SubTitle2 } from "../../../styles/Title";
+import { SubTitle } from "../../../styles/Title";
 import { JobModalSection } from "../JoinUs/JobModal";
 import { FormLabel } from "../../RepeatComponent/ShortResponse";
 import { BreakPadding } from "../../../styles/BreakPadding";
 import { ShortResponse } from "../../RepeatComponent/ShortResponse";
 import { Link } from "react-router-dom";
 
-import { useState } from "react";
-
-const donateData = [
-  {
-    id: 1,
-    title: "Helping Ana to Sell Grass Jelly",
-    img: "https://app.zakki.org/storage/profiles/sreVBGQSzogt5JKHLi1XZB5JkIkDPfIKT66h2rqi.jpeg",
-    description:
-      "A grandfather who sells grass jelly, still enthusiastically pushes his trading cart.. Kake's name is Ki Ana, he sells grass jelly around Tarogong to the Intan Regency area, with a very cheap price of Rp. 3000 only, very cheap nowadays.. Ki Ana live in the Buleud Tarogong area, he said it was close to the Cikuda volleyball court, I didn't have time to ask long questions because his hearing was not good, we have to shout loudly when talking to Ki Ana or he pays attention to the mouth movements of the other person.",
-    update_time: "2/25/2023",
-    create_date: "7/1/2015",
-    target_donate: 3500000,
-    donate_progress: 22000,
-    location: "Round Tarogong",
-    donate: Math.floor(Math.random() * 100),
-    volunteer: Math.floor(Math.random() * 100),
-    beneficiary: Math.floor(Math.random() * 10),
-    event: [1, 2],
-  },
-];
 
 const donateAmount = [
   {

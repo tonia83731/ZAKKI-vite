@@ -10,8 +10,6 @@ import { ReactComponent as MicIcon } from "../../../assets/svg/_Mic.svg";
 import { ReactComponent as FilterIcon } from "../../../assets/svg/filter.svg";
 import { ReactComponent as FilterDesktopIcon } from "../../../assets/svg/FilterDesktop.svg";
 
-import FilterList from "./FilterList";
-
 const programFilterData = [
   {
     id: 1,

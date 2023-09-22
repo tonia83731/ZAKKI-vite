@@ -6,7 +6,7 @@ import { dummyJobData } from "../../../../Data/JobData";
 import { styled } from "styled-components";
 import { breakpoints } from "../../../../styles/Breakpoints";
 import { colorList } from "../../../../styles/ColorSettings";
-import { CardDiv, CardBody, CardParagraph } from "../../Program/ProgramCard";
+import { CardBody, CardParagraph } from "../../Program/ProgramCard";
 import { FlexCenter } from "../../Event/RecommendEvent";
 import { SubTitle2 } from "../../../../styles/Title";
 
@@ -50,10 +50,6 @@ export default function JobOptions({ onInfoClick, onJobOptionsChange }) {
   });
   return <JobOptionsContainer>{jobCard}</JobOptionsContainer>;
 }
-
-// const JobLabel = styled.label`
-//   border: 2px solid ${colorList.green_focus_80};
-// `;
 
 const JobOptionsContainer = styled.div`
   white-space: nowrap;

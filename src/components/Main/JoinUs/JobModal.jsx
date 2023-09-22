@@ -3,24 +3,6 @@ import { breakpoints } from "../../../styles/Breakpoints";
 import { colorList } from "../../../styles/ColorSettings";
 import { SubTitle, SubTitle2 } from "../../../styles/Title";
 
-const modalData = [
-  {
-    id: 6,
-    name: "videoprapher",
-    title: "Videographer",
-    location: "Vurtual / In Person",
-    duration: "3-months",
-    url: "https://picsum.photos/300?text=5",
-    requirements: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "Maecenas posuere turpis tristique nisl tempus, eu semper lacus accumsan.",
-      "Nullam ac tellus a dui accumsan condimentum at eget ipsum.",
-      "Vivamus vel eros in risus vestibulum placerat.",
-      "Vivamus vel leo nec mauris tristique euismod nec sed enim.",
-    ],
-  },
-];
-
 export default function JobModal({prop, onModalClose}) {
   return (
     <JobModalSection id="job-modal">

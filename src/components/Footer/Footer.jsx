@@ -14,17 +14,18 @@ const aboutUsData = [
 const involvedData = [
   {
     id: 1,
-    name: "Donate"
+    name: "Donate",
   },
   {
     id: 2,
-    name: "Volunteer"
+    name: "Volunteer",
+    herf: "/ZAKKI-vite/joinus",
   },
   {
     id: 3,
-    name: "Partner"
+    name: "Partner",
   },
-]
+];
 
 const contactData = [
   {
@@ -78,10 +79,6 @@ export default function Footer(){
   );
 }
 
-// @media screen and (min-width: ${breakpoints.tablet}) {
-// }
-// @media screen and (min-width: ${breakpoints.desktop}) {
-// }
 
 const SiteFooter = styled.footer`
   background-color: ${colorList.neutral_80};

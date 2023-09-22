@@ -1,10 +1,7 @@
-
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 import { colorList } from "../../../styles/ColorSettings";
 import { SubTitle2 } from "../../../styles/Title";
-
-import { dummyProgramData } from "../../../Data/ProgramData";
 import { breakpoints } from "../../../styles/Breakpoints";
 
 
@@ -51,11 +48,6 @@ export const CardBody = styled.div`
     min-height: 120px;
   }
 `;
-// export const CardTitle = styled.h5`
-//   font-size: 16px;
-//   min-height: 30px;
-//   margin-top: 0.5em;
-// `;
 export const CardParagraph = styled.p`
   font-size: 12px;
   color: ${colorList.neutral_60};

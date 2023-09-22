@@ -1,10 +1,5 @@
-import { ReactComponent as CheckedIcon } from "../../../../assets/svg/Checked.svg";
-
 import { styled } from "styled-components";
 import { colorList } from "../../../../styles/ColorSettings";
-
-import {useState} from 'react'
-import { MainContainer } from "../../../../styles/Container";
 
 const steps = [
   {
@@ -20,34 +15,6 @@ const steps = [
     step: 3,
   },
 ];
-
-// export default function ApplyProgress() {
-//   const progress = progressData.map((step) => {
-//     return (
-//       <>
-//         <div className="progress-group" key={step.id} data-step={step.id}>
-//           <span className="progress-icon-group">
-//             <div className="progress-icon">
-//               <CheckedIcon />
-//             </div>
-//           </span>
-//           <div className="progress-label">{step.name}</div>
-//         </div>
-//         {step.id === 4 ? (
-//           ""
-//         ) : (
-//           <hr className="progress-bar" data-step={step.id} />
-//         )}
-//       </>
-//     );
-//   });
-
-//   return (
-//     <section className="apply-progress">
-//       <div className="apply-progress-container">{progress}</div>
-//     </section>
-//   );
-// }
 
 export default function ApplyProgress({props, width, activeStep}){
   return (
@@ -79,7 +46,6 @@ const MainStepContainer = styled.div`
   margin: 0 auto;
   padding: 0 15px;
 `;
-// max-width: 600px;
 
 const StepContainer = styled.div`
   display: flex;

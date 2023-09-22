@@ -1,5 +1,3 @@
-import { ReactComponent as EventTimeIcon } from "../../../assets/Img/event/event_time.svg";
-import { ReactComponent as EventLocationIcon } from "../../../assets/Img/event/event_location.svg";
 
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";

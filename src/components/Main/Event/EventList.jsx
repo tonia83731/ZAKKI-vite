@@ -3,10 +3,9 @@ import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 import { colorList } from "../../../styles/ColorSettings";
 import { SubTitle2 } from "../../../styles/Title";
-import { FlexCenter, EventCardParagraph, CardItemParagraph, EventInfoAdjust, SpaceDiv } from "./RecommendEvent";
+import { EventCardParagraph, CardItemParagraph, EventInfoAdjust, SpaceDiv } from "./RecommendEvent";
 import { EventTimeSVG, EventLocationSVG } from "../../../styles/EventSVG";
 
-import { dummyEventData } from '../../../Data/EventData';
 
 
 

@@ -1,6 +1,5 @@
 import { styled } from "styled-components";
 import { breakpoints } from "../../../styles/Breakpoints";
-import { colorList } from "../../../styles/ColorSettings";
 import { PageBorderTitle, PageBorderSubTitle } from "../../RepeatComponent/PageTitle";
 import { PageContainer } from "../../../styles/Container";
 import AboutUsDiagram from "./AboutUsDiagram";
@@ -25,7 +24,7 @@ export default function AboutUs() {
             <AboutUsDiagram />
           </div>
           <AboutUsIframe
-            src="https://www.youtube.com/embed/tYmvsrkN8po"
+            src="https://www.youtube.com/embed/DWv-lACT9cc?si=LuWBD2644gGSLppS"
             title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -45,7 +44,7 @@ const AboutUsGroup = styled.div`
   display: grid;
   grid-gap: 1em;
   grid-template-columns: 100%;
-  grid-template-rows: 1fr 1.5fr;
+  grid-template-rows: 0.5fr 1.5fr;
   @media screen and (min-width: ${breakpoints.tablet}) {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 100%;
@@ -69,5 +68,11 @@ const AboutUsSubTitle = styled(PageBorderSubTitle)`
 
 const AboutUsIframe = styled.iframe`
   width: 100%;
-  height: 100%;
-`
+  height: 200px;
+  @media screen and (min-width: 600px) {
+    height: 350px;
+  }
+  @media screen and (min-width: 800px) {
+    height: 100%;
+  }
+`;

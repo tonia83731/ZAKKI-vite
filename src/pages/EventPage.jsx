@@ -1,4 +1,3 @@
-import { breakpoints } from "../styles/Breakpoints";
 import { BreakPadding } from "../styles/BreakPadding";
 import { PageTitle } from "../components/RepeatComponent/PageTitle";
 import { SubTitle } from "../styles/Title";

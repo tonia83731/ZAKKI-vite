@@ -8,7 +8,9 @@ export default function FooterSection({ title, data }) {
   const listItems = data.map((item) => {
     return (
       <FooterItem key={item.id}>
-        <FooterLink>{item.name}</FooterLink>
+        <a href={item.herf}>
+          <FooterLink>{item.name}</FooterLink>
+        </a>
       </FooterItem>
     );
   });

@@ -1,18 +1,6 @@
-import ApplyProgressControlChange from "./ApplyProgressControlChange"
-
 import { styled } from "styled-components"
 import { colorList } from "../../../../styles/ColorSettings"
 
-
-// export default function ApplyProgressControl({phase, onClick}){
-//   return(
-//     <section className="apply-progress-control">
-//       <div className="progress-control-container">
-//         <ApplyProgressControlChange phase={phase} onClick={onClick}/>
-//       </div>
-//     </section>
-//   )
-// }
 export default function ApplyProgressControl({
   onPreClick,
   onNextClick,

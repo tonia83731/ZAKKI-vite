@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-import { Link } from "react-router-dom";
 import { breakpoints } from "../../../styles/Breakpoints";
 import { colorList } from "../../../styles/ColorSettings";
 

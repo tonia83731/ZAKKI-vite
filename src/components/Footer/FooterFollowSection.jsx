@@ -6,8 +6,8 @@ import { FooterGroup } from "./FooterSection";
 
 
 import { ReactComponent as TwitterIcon } from "../../assets/svg/icons8-twitter-circled-50.svg";
-import { ReactComponent as FacebookIcon } from "../../assets/svg/icons8-facebook-50.svg";
-import { ReactComponent as InstagramIcon } from "../../assets/svg/icons8-instagram-circle-50.svg";
+import { ReactComponent as LinkedInIcon } from "../../assets/svg/icons8-linkedin-50.svg";
+import { ReactComponent as YoutubeIcon } from "../../assets/svg/Youtube.svg";
 
 export default function FooterFollowSection({ title, data }) {
   return (
@@ -15,13 +15,19 @@ export default function FooterFollowSection({ title, data }) {
       <SubTitle color={colorList.white}>{title}</SubTitle>
       <FooterSocList>
         <FooterSocLink>
-          <TwitterIcon />
+          <a href="https://twitter.com/AksiZAKKI">
+            <TwitterIcon />
+          </a>
         </FooterSocLink>
         <FooterSocLink>
-          <FacebookIcon />
+          <a href="https://www.linkedin.com/company/zakki/?trk=public_profile_volunteering-position_profile-section-card_full-click&originalSubdomain=in">
+            <LinkedInIcon />
+          </a>
         </FooterSocLink>
         <FooterSocLink>
-          <InstagramIcon />
+          <a href="https://www.youtube.com/channel/UCKFr6Tc9VgQvANzUpVJIgrg">
+            <YoutubeIcon />
+          </a>
         </FooterSocLink>
       </FooterSocList>
     </FooterGroup>
@@ -43,26 +49,11 @@ const FooterSocLink = styled.a`
       fill: ${colorList.white};
     }
   }
-  &:last-child {
-    svg {
-      width: 32px;
-      height: 32px;
-      path {
-        fill: ${colorList.white};
-      }
-    }
-  }
 
   @media screen and (min-width: ${breakpoints.tablet}) {
     svg {
       width: 35px;
       height: 35px;
-    }
-    &:last-child {
-      svg {
-        width: 37px;
-        height: 37px;
-      }
     }
   }
 `;
